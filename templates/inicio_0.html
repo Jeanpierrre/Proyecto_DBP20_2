@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            margin:0px;
+            padding: 0px;
+            background-color: khaki;
+            height: 100vh; 
+        }
+
+        .login-caja{
+            width: 320px;
+            height: 420px;
+            background: black;
+            color:#fff;
+            top:50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 70px 30px;
+        }
+        .login-caja .avatar{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            top:-50px;
+            left:calc(50%-50px);
+        }
+        .login-caja label{
+            margin: 0px;
+            padding: 0px;
+            font-weight: bold;
+            display: block;
+        }
+        .login-caja h1{
+            margin: 0;
+            padding: 0 0 20px;
+            text-align: center;
+            font-size: 22px;
+        }
+        
+        .login-caja input{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .login-caja input[type="text"],
+        .login-caja input[type="password"]{
+            border:none;
+            border-bottom: 1px solid white;
+            background: transparent;
+            outline: none;
+            height: 40px;
+            color:white;
+            font-size: 16px;
+        }
+
+        .login-caja input[type="submit"]{
+            border:none;
+            outline: none;
+            height: 40px;
+            background: #b80f22;
+            color:white;
+            font-size: 18px;
+            border-radius:20px;
+        }
+        .login-caja a{
+            text-decoration: none;
+            font-size: 12px;
+            line-height: 20px;
+            color:rgb(117, 77, 77);
+        }
+        .login-caja a:hover{
+            color:white;
+        }
+        body{
+            font-family: sans-serif;
+            margin:0;
+            background:url(fondo.jpg) no-repeat center top;
+            background-size: cover;
+        }
+
+        a{
+            text-decoration: none;
+            color:black;
+        }
+        
+        header{
+            display:flex;
+            min-height:70px;
+            
+
+            background-color: coral;
+            justify-content: space-between;
+
+            align-items: center;
+            padding: 10px;
+            
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+
+        }
+        .logo-img{
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        nav a{
+            font-weight: 600;
+            padding-right: 10px;
+
+
+        }
+        <!-- cursos por encima-->
+        nav a:hover{
+            color:white;
+        }
+
+
+        @media (max-width:700px) {
+            header{
+                flex-direction: column;
+            }
+            nav{
+                padding: 10px 0px;
+            }
+        }
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <a href="entro.html" class="logo">
+            <img src="logo.png" alt="logo de la compañia" class="logo-img">
+            <h2 class="nombre-empresa"> Cursos ingles</h2>
+        </a>
+        <nav>
+            <a href="" class="nav-link">Inicio</a>
+            <a href="" class="nav-link">Sobre Nosotros</a>
+            <a href="" class="nav-link">Contactos</a>
+        </nav>
+    </header>
+    <div class="login-caja">
+        <img class="avatar" src="ingresar.jpg" alt="Ingresar Logo">
+        <h1> Login Here</h1>
+        <form id="form" action="/usuario/create" method="POST">
+            <!--usuario-->
+            <laber for="username">Usuario</laber>
+
+            <input type="text" name="name" placeholder="enter Username">
+
+            <laber for="password">contraseña</laber>
+            <input type="password" name="contraseña" placeholder="enter password">
+
+
+            
+            <input type="submit" value="login">
+            
+            
+            
+            
+            <a href="#"> Registrarme</a>
+        
+        
+        </form>
+
+    </div>
+    
+</body>
+</html>

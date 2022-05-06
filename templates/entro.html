@@ -1,0 +1,132 @@
+<html>
+    
+    <head>
+        
+    <body>
+
+        <title>Entro</title>
+       
+    </body>
+        
+
+
+    </head>
+        <style>
+            .hidden{
+                display:none;
+                padding: 25px;
+                margin-bottom: 15px;
+            }
+            .box_b{
+                border: 1px solid blue;
+            }
+            
+            .container-from{
+                display: inline-block;
+                border:2 px red;
+            }
+            body{
+            font-family: sans-serif;
+            margin:0;
+            background:url(fondo.jpg) no-repeat center top;
+            background-size: cover;
+        }
+
+        a{
+            text-decoration: none;
+            color:black;
+        }
+        
+        header{
+            display:flex;
+            min-height:70px;
+            
+
+            background-color: coral;
+            justify-content: space-between;
+
+            align-items: center;
+            padding: 10px;
+            
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+
+        }
+        .logo-img{
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        nav a{
+            font-weight: 600;
+            padding-right: 10px;
+
+
+        }
+        <!-- cursos por encima-->
+        nav a:hover{
+            color:white;
+        }
+
+
+        @media (max-width:700px) {
+            header{
+                flex-direction: column;
+            }
+            nav{
+                padding: 10px 0px;
+            }
+        }
+        
+            
+        </style>
+
+        <body>
+            <header>
+                <a href="entro.html" class="logo">
+                    <img src="logo.png" alt="logo de la compañia" class="logo-img">
+                    <h2 class="nombre-empresa"> Cursos ingles</h2>
+                </a>
+                <nav>
+                    <a href="" class="nav-link">Inicio</a>
+                    <a href="" class="nav-link">Sobre Nosotros</a>
+                    <a href="" class="nav-link">Contactos</a>
+                </nav>
+            </header>
+            <div id="error" class="hidden">
+                <p style="color: red; font-size:50px;">Error inesperado</p>
+            </div>
+            
+            
+            <ul>
+                Bienvenido usuario: 
+                    <li>
+                        {{da[0]}}
+
+                    </li>
+                    
+               
+            </ul>
+                
+            </div>
+
+        <body>
+
+        
+        
+
+
+
+    </body>
+  
+
+    
+        
+        
+
+    
+</html>
+
+
