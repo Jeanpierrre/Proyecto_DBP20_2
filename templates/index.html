@@ -1,0 +1,31 @@
+<html lang="es">
+    <head>
+        <title>Curso de Ingles</title>
+    </head>
+    <body>
+        <header>
+            <div>
+                <a href=""></a>
+                    <h1>CURSO INGLES</h1>
+                </a>
+            </div>
+            <nav>
+                <a href="">Registro</a>
+            </nav> 
+        </header>
+        <section>
+            <header><h2>{% block header %}{% endblock %}</h2></header>
+        </section>
+        
+        <form method="post" >
+            <input type="text" id="name" name="name" placeholder="Nombre"/>
+            <input type="text" id="apellido" name="apellido" placeholder="Apellido"/>
+            <input type="submit" value="Registrarse" />
+        </form>
+        <ul id="registros">
+            {% for d in data %}
+                <li>{{d.name}}</li>
+            {% endfor %}    
+        </ul>
+    </body>
+</html>
