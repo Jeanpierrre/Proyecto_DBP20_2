@@ -1,0 +1,1 @@
+el codigo inicia el menu(inicio_0) y manda una prueba al entro.html que se coencta a la base de datos
