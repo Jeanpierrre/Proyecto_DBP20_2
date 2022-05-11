@@ -18,29 +18,24 @@ class Menu(db.Model):
 
     contraseña=db.Column(db.String(), primary_key=False)
     
-    #age = db.Column(db.Integer, nullable =False) 
-    #telefono = db.Column(db.Integer, nullable =False) 
-
-    #def __init__(self,name,contraseña) -> None:
-        #self.name = name
-        #self.contraseña=contraseña
-
     def __repr__(self):
-        return f'Registro: name={self,name}'
+        return f'codigo={self.codigo}, name={self.name}'
     
 
 db.create_all()
 
 @lb.route('/')      
 def index():    
-
- return render_template('inicio_0.html', data=Menu.query.all())
+     return render_template('inicio_0.html')
 
 @lb.route('/usuario/create', methods=['POST'])
 def create_prueba_post():
    error = False
    response = {}
-
+   name = request.form.get('name','')
+   contraseña = request.form.get('contraseña','')
+   if(contraseña==''):
+        return render_template('inicio_0.html')
    try:
         id= request.form.get('id','')
         name = request.form.get('name','')
@@ -62,7 +57,57 @@ def create_prueba_post():
         abort(500)
 
    else:
-     return render_template('entro.html',  da=Menu.query.filter_by(name=name).all())
+        
+     return render_template('entro.html',  da=Menu.query.all())
+
+
+#Segundo modelo
+class registro(db.Model):
+     __tablename__ = 'registros'
+     id_r = db.Column(db.Integer, primary_key=True)
+     nombre = db.Column(db.String(), nullable=False)
+     apellido = db.Column(db.String(), nullable=False)
+     edad = db.Column(db.Integer, nullable=False)
+     colegio=db.Column(db.String(),nullable=False)
+     #id_curso=db.Column(db.Integer,db.ForeignKey('Menu.codigo'),nullable=False)
+     def __repr__(self):
+        return "Incripcion realizada"
+
+db.create_all()
+
+
+@lb.route('/registros/create', methods=['POST'])
+def create_registro_post():
+
+   error = False
+   response = {}
+   nombre= request.form.get('nombre','')
+   apellido= request.form.get('apellido','')
+   edad=request.form.get('edad','')
+   colegio=request.form.get('colegio','')
+
+   try:
+          nombre= request.form.get('nombre','')
+          apellido= request.form.get('apellido','')
+          edad=request.form.get('edad','')
+          colegio=request.form.get('colegio','')
+        
+          pasar = registro(nombre=nombre,apellido=apellido,edad=edad,colegio=colegio)
+        
+          db.session.add(pasar)
+          db.session.commit()
+   except:
+        error = True
+        db.session.rollback()
+        print(sys.exc_info())
+   finally:
+        db.session.close()
+   if error:
+        abort(500)
+
+   else:
+        
+     return render_template('hola.html',  da=[nombre,apellido])
 
 
 

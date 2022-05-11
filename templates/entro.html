@@ -90,7 +90,7 @@
                     <h2 class="nombre-empresa"> Cursos ingles</h2>
                 </a>
                 <nav>
-                    <a href="" class="nav-link">Inicio</a>
+                    <a href="inicio_0.html" class="nav-link">Inicio</a>
                     <a href="" class="nav-link">Sobre Nosotros</a>
                     <a href="" class="nav-link">Contactos</a>
                 </nav>
@@ -99,16 +99,52 @@
                 <p style="color: red; font-size:50px;">Error inesperado</p>
             </div>
             
-            
-            <ul>
-                Bienvenido usuario: 
-                    <li>
-                        {{da[0]}}
+            sda
+            <div class="pasar-datos">
+             
+        
+                <form id="form" action="/registros/create" method="POST">
+                    <!--usuario  nombre
+                    apellido edad colegio -->
+                   
+                    <laber for="nombre">nombre</laber>
+        
+                    <input type="text" name="nombre">
+        
+                    <laber for="apellido">Apellido</laber>
+                    <input type="text" name="apellido">
 
-                    </li>
+                    <laber for="edad"> Edad</laber>
+                    <input type="number" name="edad">
+
+                    <laber for="colegio">colegio</laber>
+                    <input type="text" name="colegio">
+        
+        
                     
-               
-            </ul>
+                    <input type="submit" value="ingresar">
+                    
+                    
+                    
+                    
+                    
+                
+                
+                </form>
+        
+            </div>
+            <!--
+                        <ul>
+                                    Bienvenido usuario: 
+                                        <li>
+                                            {{da.name}}
+
+                                        </li>
+                                        
+                                
+                                </ul>
+            -->
+     
                 
             </div>
 
