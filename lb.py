@@ -87,10 +87,11 @@ def create_registro_post():
    colegio=request.form.get('colegio','')
 
    try:
-          nombre= request.form.get('nombre','')
-          apellido= request.form.get('apellido','')
           edad=request.form.get('edad','')
           colegio=request.form.get('colegio','')
+          nombre= request.form.get('nombre','')
+          apellido= request.form.get('apellido','')
+       
         
           pasar = registro(nombre=nombre,apellido=apellido,edad=edad,colegio=colegio)
         
