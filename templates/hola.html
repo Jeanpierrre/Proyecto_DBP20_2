@@ -5,29 +5,163 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        header{
+            display:flex;
+            min-height:70px;
+            
+
+            background-color: coral;
+            justify-content: space-between;
+
+            align-items: center;
+            padding: 10px;
+            
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+
+        }
+        .logo-img{
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        nav a{
+            font-weight: 600;
+            padding-right: 10px;
+
+
+        }
+        nav a:hover{
+            color:white;
+        }
+
+
+        @media (max-width:700px) {
+            header{
+                flex-direction: column;
+            }
+            nav{
+                padding: 10px 0px;
+            }
+        }
+        body{
+            font-family: sans-serif;
+            margin:0;
+            background:url(fondo.jpg) no-repeat center top;
+            background-size: cover;
+            margin:0px;
+            padding: 0px;
+            background-color: khaki;
+            height: 100vh; 
+            
+        }
+        .inicio-basico{
+            width: 320px;
+            height: 420px;
+            background: rgb(238, 246, 0);
+            color:#fff;
+            top:50%;
+            left: 20%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 70px 30px;
+            color:rgb(117, 77, 77);
+
+        }
+        .inicio-basico a:hover{
+            color:white;
+
+        }
+
+        .inicio-avanzado{
+            width: 320px;
+            height: 420px;
+            background: rgb(211, 52, 20);
+            
+            color:#fff;
+            top:50%;
+            left: 70%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 70px 30px;
+            color:rgb(117, 77, 77);
+
+        }
+        .inicio-intermedio{
+            width: 320px;
+            height: 420px;
+            background: rgb(209, 98, 19);
+            color:#fff;
+            top:50%;
+            left: 45%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 70px 30px;
+            color:rgb(117, 77, 77);
+
+        }
+
+
+</style>
 </head>
 <body>
     <header>
-        <div>
-            <a href=""></a>
-                <h1>CURSO INGLES</h1>
-            </a>
-        </div>
-        
+        <a href="entro.html" class="logo">
+            <img src="logo.png" alt="logo de la compañia" class="logo-img">
+            <h2 class="nombre-empresa"> Cursos ingles</h2>
+        </a>
+        <nav>
+            <a href="" class="nav-link">Inicio</a>
+            <a href="" class="nav-link">Sobre Nosotros</a>
+            <a href="" class="nav-link">Contactos</a>
+        </nav>
+    </header>
+       <!-- margin:0px;
+            padding: 0px;
+            background-color: khaki;
+            height: 100vh; 
+            -->
         <ul>
-            Bienvenido usuario : 
-                <li>
-                    {{da[0] + da[1]}}
+    
 
-                </li>
-                
+            {{da[0] + da[1]}} , por favor eligue tu curso.
+         
            
         </ul>
-        <nav>
+        <a class="inicio-basico" href="bg.jpg   ">
+       
+            <nav>
 
-            <a href="">Registro</a>
-        </nav> 
-    </header>
+                Basico
+            </nav> 
+        </div>
+        </a>
+
+        <a class="inicio-intermedio" href="bg.jpg ">
+       
+            <nav>
+
+                Intermedio
+            </nav> 
+        </div>
+        </a>
+
+        <a class="inicio-avanzado" href="bg.jpg   ">
+       
+            <nav>
+
+                Avanzado
+            </nav> 
+        </div>
+        </a>
+        
+    
     
 </body>
 </html>
