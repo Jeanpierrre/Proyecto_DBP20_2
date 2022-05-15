@@ -18,6 +18,17 @@
             padding: 10px;
             
         }
+        .box {
+                
+                background-color: aqua;
+        }
+        .container {
+                display: flex;
+                flex-direction: row;
+                height: 900px;
+                width: 100px;
+        
+        }
         .logo{
             display: flex;
             align-items: center;
@@ -217,13 +228,15 @@
             background-color: khaki;
             height: 100vh; 
             -->
-        <ul>
-    
 
-            {{da[0] + da[1]}} , por favor eligue tu curso.
-         
-           
-        </ul>
+        <div class="container">
+            <div class="box">
+                <ul>
+                    <p>doasdjkosd</p>
+                </ul>
+            </div>
+            
+        </div>
         <div class="inicio-arriba">
             Basico
         </div>
@@ -273,22 +286,6 @@
         </div>
         </a>
         
-        <div class="dificultad">
-            <form id="form" action="/usuario/create" method="POST">
-                <!--usuario-->
-                <laber for="username">Usuario</laber>
-    
-                <input type="text" name="name" placeholder="enter Username">
-    
-                <laber for="password">contraseña</laber>
-                <input type="password" name="contraseña" placeholder="enter password">
-  
-                <input type="submit" value="login">
- 
-
-            </form>
-        </div>
-
         <div class="tabla">
             <img class="tabla-imagen" src="https://www.stjames.es/sites/default/files/academia_ingles_cursos_intensivos_b2.jpg">
         </div>
