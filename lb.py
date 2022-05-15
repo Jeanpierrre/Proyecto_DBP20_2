@@ -28,7 +28,7 @@ db.create_all()
 def index():    
      return render_template('inicio_0.html')
 
-@lb.route('/usuario/create', methods=['POST'])
+@lb.route('/usuario/create', methods=['POST','GET'])
 def create_prueba_post():
    error = False
    response = {}
@@ -77,7 +77,7 @@ class registro(db.Model):
 db.create_all()
 
 
-@lb.route('/registros/create', methods=['POST'])
+@lb.route('/registros/create', methods=['POST','GET'])
 def create_registro_post():
 
    error = False
@@ -126,7 +126,7 @@ class Tipo(db.Model):
 db.create_all()
 
 
-@lb.route('/dificultad/create', methods=['POST'])
+@lb.route('/dificultad/create', methods=['POST','GET'])
 def create_dificultad_post():
 
    error = False
