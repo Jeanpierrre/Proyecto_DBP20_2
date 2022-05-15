@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header{
+            display:flex;
+            min-height:70px;
+            
+
+            background-color: coral;
+            justify-content: space-between;
+
+            align-items: center;
+            padding: 10px;
+            
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+
+        }
+        .logo-img{
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        nav a{
+            font-weight: 600;
+            padding-right: 10px;
+
+
+        }
+        nav a:hover{
+            color:white;
+        }
+
+
+        @media (max-width:700px) {
+            header{
+                flex-direction: column;
+            }
+            nav{
+                padding: 10px 0px;
+            }
+        }
+        body{
+            font-family: sans-serif;
+            margin:0;
+            background:url(fondo.jpg) no-repeat center top;
+            background-size: cover;
+            margin:0px;
+            padding: 0px;
+            background-color: khaki;
+            height: 100vh; 
+            
+        }
+        .inicio-arriba{
+            width: 160px;
+            height: 40px;
+            background: rgb(209, 98, 19);
+            color:#fff;
+            top: 185px;
+            left: 14%;
+            position: absolute;
+            background: rgb(209, 98, 19);
+            padding: 10px 15px;
+            color:white;
+            border-radius:20px;
+         
+            
+            
+        
+            
+        }
+        .inicio-basico{
+            z-index: -200;
+            width: 320px;
+            height: 420px;
+            background: rgb(238, 246, 0);
+            color:#fff;
+            top:50%;
+            left: 20%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 70px 30px;
+            color:white;
+            border-radius:50px;
+
+        }
+        h1{
+            color: black;
+            font-size:22px ;
+            margin-bottom: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        /* */
+        .inicio-basico .avatar{
+            width: 150px;
+            height: 70px;
+          
+            position: absolute;
+            top:10px;
+            left: 50px;
+        }
+        .inicio-basico a{
+            color:white;
+            text-decoration: none;
+        }
+        .inicio-basico a:hover{
+            color:black;
+            
+            text-decoration: underline;
+
+
+        }
+
+   
+        .inicio-avanzado{
+            width: 320px;
+            height: 420px;
+            background: rgb(211, 52, 20);
+            
+            color:#fff;
+            top:50%;
+            left: 70%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 70px 30px;
+            color:white;
+            border-radius:50px;
+
+        }
+        .inicio-intermedio{
+            width: 320px;
+            height: 40px;
+            background: rgb(19, 95, 209);
+            color:#fff;
+            top:30%;
+            left: 45%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 25px 35px;
+            color:white;
+            border-radius:10px;
+
+        }
+        .intermedio-abajo{
+            width: 320px;
+            height:100px;
+            background: rgb(29, 83, 184);
+            margin:auto;
+            position: absolute;
+            top: 50%;
+            left: 45%;
+            transform: translate(-50%,-50%);
+            padding: 70px 5px;
+            border-radius:20px;
+
+        }
+        .inicio-intermedio a{
+            color:white;
+            text-decoration: none;
+            
+        }
+        .inicio-intermedio a:hover{
+            color:black;
+            
+            text-decoration: underline;
+
+
+        }
+        h2{
+            width: 250px;
+            height: 100px;
+          
+            position: absolute;
+            top:10px;
+            left: 20px;
+            color: black;
+            font-size:22px ;
+            margin-bottom: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .tabla .tabla-imagen{
+            width: 320px;
+            height: 200px;
+            top: 200px;
+            left: 300px;
+            padding: 390px 550px;
+          
+        }
+
+</style>
+</head>
+<body>
+    <header>
+        <a href="entro.html" class="logo">
+            <img src="logo.png" alt="logo de la compañia" class="logo-img">
+            <h2 class="nombre-empresa"> Cursos ingles</h2>
+        </a>
+        <nav>
+            <a href="" class="nav-link">Inicio</a>
+            <a href="" class="nav-link">Sobre Nosotros</a>
+            <a href="" class="nav-link">Contactos</a>
+        </nav>
+    </header>
+       <!-- margin:0px;
+            padding: 0px;
+            background-color: khaki;
+            height: 100vh; 
+            -->
+        <ul>
+    
+
+            {{da[0] + da[1]}} , por favor eligue tu curso.
+         
+           
+        </ul>
+        <div class="inicio-arriba">
+            Basico
+        </div>
+
+
+        <div class="inicio-basico">
+            
+            <img class="avatar" src="basico.png">
+            <p></p>
+            <h1>
+                Perfil:
+                <br>
+                Conocimientos muy básicos o nulos del ingles.
+                <br>
+                Necesidades personales o laborales.
+            </h1>
+            <a  href="basico.html">
+                basico
+           </a>
+        </div>
+        <div class="inicio-intermedio">
+            
+            <form id="form" action="/dificultad/create" method="POST">
+                
+                <input="no-repeat" type="default" name="dificultad" value="Intermedio" >
+                <a  href="intermedio.html">INTERMEDIO</a>
+            </form>
+                
+            
+        </div>
+
+       
+        </a>
+        <div class="intermedio-abajo">
+            <h2>
+                Perfil:
+                <br>
+                Conocimientos muy básicos o nulos del ingles.
+                <br>
+                Necesidades personales o laborales.
+            </h2>
+        </div>
+
+
+        <a class="inicio-avanzado" href="avanzado.html">
+       
+            <nav>
+
+                Avanzado
+            </nav> 
+        </div>
+        </a>
+        
+
+        <div class="tabla">
+            <img class="tabla-imagen" src="tabla.jpg">
+        </div>
+    
+    
+</body>
+</html>

@@ -58,7 +58,7 @@ def create_prueba_post():
 
    else:
         
-     return render_template('entro.html',  da=Menu.query.all())
+     return render_template('datos_registrar.html',  da=Menu.query.all())
 
 
 #Segundo modelo
@@ -69,6 +69,7 @@ class registro(db.Model):
      apellido = db.Column(db.String(), nullable=False)
      edad = db.Column(db.Integer, nullable=False)
      colegio=db.Column(db.String(),nullable=False)
+     numero=db.Column(db.Integer, nullable=False)
      #id_curso=db.Column(db.Integer,db.ForeignKey('Menu.codigo'),nullable=False)
      def __repr__(self):
         return "Incripcion realizada"
@@ -85,15 +86,15 @@ def create_registro_post():
    apellido= request.form.get('apellido','')
    edad=request.form.get('edad','')
    colegio=request.form.get('colegio','')
-
+   numero=request.form.get('numero','')
    try:
           edad=request.form.get('edad','')
           colegio=request.form.get('colegio','')
           nombre= request.form.get('nombre','')
           apellido= request.form.get('apellido','')
-       
+          numero=request.form.get('numero','')
         
-          pasar = registro(nombre=nombre,apellido=apellido,edad=edad,colegio=colegio)
+          pasar = registro(nombre=nombre,apellido=apellido,edad=edad,colegio=colegio,numero=numero)
         
           db.session.add(pasar)
           db.session.commit()
@@ -108,7 +109,53 @@ def create_registro_post():
 
    else:
         
-     return render_template('hola.html',  da=[nombre,apellido])
+     return render_template('tipoElegir.html',  da=[nombre,apellido])
+
+
+
+#Segundo modelo
+class Tipo(db.Model):
+     __tablename__ = 'dificultad'
+     id = db.Column(db.Integer, primary_key=True)
+     dificultad= db.Column(db.String(), nullable=False)
+    
+     #id_curso=db.Column(db.Integer,db.ForeignKey('Menu.codigo'),nullable=False)
+     def __repr__(self):
+        return "Incripcion realizada"
+
+db.create_all()
+
+
+@lb.route('/dificultad/create', methods=['POST'])
+def create_dificultad_post():
+
+   error = False
+   response = {}
+   dificultad= request.form.get('dificultad','')
+
+   try:
+          dificultad= request.form.get('dificultad','')
+
+        
+          pasar = Tipo(dificultad=dificultad)
+        
+          db.session.add(pasar)
+          db.session.commit()
+   except:
+        error = True
+        db.session.rollback()
+        print(sys.exc_info())
+   finally:
+        db.session.close()
+   if error:
+        abort(500)
+    
+   else:
+        
+     return render_template('intermedio.html')
+
+
+  
 
 
 
