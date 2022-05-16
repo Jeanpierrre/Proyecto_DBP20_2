@@ -27,8 +27,8 @@ class Menu(db.Model):
 @lb.route('/lists/<list_id>')
 def get_list_listas(list_id):
      return  render_template('tipoElegir.html',
-     lists= Lista.query.all(),
-     sedes= Sede.query.filter_by(list_id = list_id).order_by('id').all()
+            lists= Lista.query.all(),
+            sedes= Sede.query.filter_by(list_id = list_id).order_by('id').all()
 )
      
 @lb.route('/')      
