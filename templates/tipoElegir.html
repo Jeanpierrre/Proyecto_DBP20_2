@@ -231,8 +231,11 @@
 
         <div class="container">
             <div class="box">
-                <ul>
-                    <p>doasdjkosd</p>
+                <p>  listasssssssss</p>
+                <ul id="lists">
+                    {% for list in lists %}
+                        {{list.name}}
+                    {% endfor %}
                 </ul>
             </div>
             

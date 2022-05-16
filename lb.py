@@ -22,8 +22,15 @@ class Menu(db.Model):
         return f'codigo={self.codigo}, name={self.name}'
     
 
-db.create_all()
+#db.create_all()
 
+@lb.route('/lists/<list_id>')
+def get_list_listas(list_id):
+     return  render_template('tipoElegir.html',
+     lists= Lista.query.all(),
+     sedes= Sede.query.filter_by(list_id = list_id).order_by('id').all()
+)
+     
 @lb.route('/')      
 def index():    
      return render_template('inicio_0.html')
@@ -74,7 +81,7 @@ class registro(db.Model):
      def __repr__(self):
         return "Incripcion realizada"
 
-db.create_all()
+#db.create_all()
 
 
 @lb.route('/registros/create', methods=['POST','GET'])
@@ -122,7 +129,7 @@ class Tipo(db.Model):
      #id_curso=db.Column(db.Integer,db.ForeignKey('Menu.codigo'),nullable=False)
      def __repr__(self):
         return "Incripcion realizada"
-db.create_all()
+#db.create_all()
 
 @lb.route('/dificultad/create', methods=['POST','GET'])
 def create_dificultad_post():
@@ -151,6 +158,31 @@ def create_dificultad_post():
    else:
         
      return render_template('intermedio.html')
+
+
+class Sede(db.Model):
+     __tablename__ = 'sedes'
+     id = db.Column(db.Integer, primary_key=True)
+     Distrito= db.Column(db.String(), nullable=False)
+     Direccion= db.Column(db.String(), nullable=False)
+     list_id=db.Column(db.Integer,db.ForeignKey('listas.id'), nullable=False)
+     
+     def __repr__(self):
+        return f'Lista: id={self.id}, name={self.Direccion}'
+
+#db.create_all()
+
+
+class Lista(db.Model):
+     __tablename__ = 'listas'
+     id = db.Column(db.Integer, primary_key=True)
+     name= db.Column(db.String(), nullable=False)
+     sedes=db.relationship('Sede', backref='list', lazy= True)
+     
+     def __repr__(self):
+        return f'Lista: id={self.id}, name={self.name}'
+
+#db.create_all()
 
 #4to modelo
 
