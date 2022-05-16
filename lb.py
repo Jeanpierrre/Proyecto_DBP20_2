@@ -1,4 +1,5 @@
 from token import LBRACE
+from turtle import back
 from unicodedata import name
 from flask import Flask, redirect, url_for
 from flask import render_template,request,abort,jsonify 
@@ -178,52 +179,25 @@ class Lista(db.Model):
      id = db.Column(db.Integer, primary_key=True)
      name= db.Column(db.String(), nullable=False)
      sedes=db.relationship('Sede', backref='list', lazy= True)
-     
+     profesores = db.relationship('Profesor', backref = 'list',lazy =True)
      def __repr__(self):
         return f'Lista: id={self.id}, name={self.name}'
 
-#db.create_all()
+db.create_all()
 
 #4to modelo
 
-class Profesores(db.Model):
+class Profesor(db.Model):
      __tablename__ = 'profesores'
-     codigo = db.Column(db.Integer, primary_key=True)
+     id = db.Column(db.Integer, primary_key=True)
      nombre = db.Column(db.String(), nullable=False)
      apellido = db.Column(db.String(), nullable=False)
      dificultad = db.Column(db.String(), nullable=False)
+     list_id=db.Column(db.Integer,db.ForeignKey('listas.id'), nullable=False)
      def __repr__(self):
-        return "Profesor registrado"
+        return f'Lista: id={self.id}, nombre={self.nombre},apellido={self.apellido},dificultad={self.dificultad}'
 
-@lb.route('/profesores/create', methods=['POST','GET'])
-def create_profesores_post():
-
-   error = False
-   response = {}
-   nombre= request.form.get('nombre','')
-   apellido= request.form.get('apellido','')
-   dificultad= request.form.get('dificultad','')
-
-   try:
-          nombre= request.form.get('nombre','')
-          apellido= request.form.get('apellido','')
-          dificultad= request.form.get('dificultad','')
-        
-          pasar = Profesores(nombre=nombre,apellido=apellido,dificultad=dificultad)
-        
-          db.session.add(pasar)
-          db.session.commit()
-   except:
-        error = True
-        db.session.rollback()
-        print(sys.exc_info())
-   finally:
-        db.session.close()
-   if error:
-        abort(500)
-    
-   else:
-     return render_template('index.html')
+db.create_all()
 
  
 if __name__ == '__main__':
