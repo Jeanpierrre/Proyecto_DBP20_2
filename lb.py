@@ -183,7 +183,7 @@ class Lista(db.Model):
      def __repr__(self):
         return f'Lista: id={self.id}, name={self.name}'
 
-db.create_all()
+#db.create_all()
 
 #4to modelo
 
@@ -197,7 +197,7 @@ class Profesor(db.Model):
      def __repr__(self):
         return f'Lista: id={self.id}, nombre={self.nombre},apellido={self.apellido},dificultad={self.dificultad}'
 
-db.create_all()
+#db.create_all()
 
  
 if __name__ == '__main__':
