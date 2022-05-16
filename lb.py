@@ -5,13 +5,11 @@ from flask import render_template,request,abort,jsonify
 from flask_sqlalchemy import SQLAlchemy 
 import sys
 from flask_migrate import Migrate
-
 lb = Flask(__name__)
 lb.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://postgres:1234@localhost:5432/proyecto'
 lb.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(lb) 
 migrate = Migrate(lb, db)
-
 #primer modelo
 class Menu(db.Model):
     __tablename__ = 'usuario'
@@ -19,12 +17,12 @@ class Menu(db.Model):
     name=db.Column(db.String(), nullable=False)
 
     contraseña=db.Column(db.String(), primary_key=False)
-    #registro = db.relationship('registros', backref='usuario', lazy='joined')
+    
     def __repr__(self):
         return f'codigo={self.codigo}, name={self.name}'
     
 
-#db.create_all()
+db.create_all()
 
 @lb.route('/')      
 def index():    
@@ -72,11 +70,11 @@ class registro(db.Model):
      edad = db.Column(db.Integer, nullable=False)
      colegio=db.Column(db.String(),nullable=False)
      numero=db.Column(db.Integer, nullable=False)
-     #id_curso=db.Column(db.Integer,db.ForeignKey('usuario.codigo'),nullable=False)
+     #id_curso=db.Column(db.Integer,db.ForeignKey('Menu.codigo'),nullable=False)
      def __repr__(self):
         return "Incripcion realizada"
 
-#db.create_all()
+db.create_all()
 
 
 @lb.route('/registros/create', methods=['POST','GET'])
@@ -115,7 +113,7 @@ def create_registro_post():
 
 
 
-#Segundo modelo
+#Tercer modelo
 class Tipo(db.Model):
      __tablename__ = 'dificultad'
      id = db.Column(db.Integer, primary_key=True)
@@ -124,8 +122,49 @@ class Tipo(db.Model):
      #id_curso=db.Column(db.Integer,db.ForeignKey('Menu.codigo'),nullable=False)
      def __repr__(self):
         return "Incripcion realizada"
+#4to modelo
+class Profesores(db.Model):
+     __tablename__ = 'profesores'
+     codigo = db.Column(db.Integer, primary_key=True)
+     nombre = db.Column(db.String(), nullable=False)
+     apellido = db.Column(db.String(), nullable=False)
+     dificultad = db.Column(db.String(), nullable=False)
+     def __repr__(self):
+        return "Profesor registrado"
 
-#db.create_all()
+@lb.route('/profesores/create', methods=['POST','GET'])
+def create_profesores_post():
+
+   error = False
+   response = {}
+   nombre= request.form.get('nombre','')
+   apellido= request.form.get('apellido','')
+   dificultad= request.form.get('dificultad','')
+
+   try:
+          nombre= request.form.get('nombre','')
+          apellido= request.form.get('apellido','')
+          dificultad= request.form.get('dificultad','')
+        
+          pasar = Profesores(nombre=nombre,apellido=apellido,dificultad=dificultad)
+        
+          db.session.add(pasar)
+          db.session.commit()
+   except:
+        error = True
+        db.session.rollback()
+        print(sys.exc_info())
+   finally:
+        db.session.close()
+   if error:
+        abort(500)
+    
+   else:
+     return render_template('index.html')
+
+
+
+db.create_all()
 
 
 @lb.route('/dificultad/create', methods=['POST','GET'])
@@ -155,29 +194,6 @@ def create_dificultad_post():
    else:
         
      return render_template('intermedio.html')
-
-class Sede(db.Model):
-     __tablename__ = 'sedes'
-     id = db.Column(db.Integer, primary_key=True)
-     Distrito= db.Column(db.String(), nullable=False)
-     Direccion= db.Column(db.String(), nullable=False)
-     list_id=db.Column(db.Integer,db.ForeignKey('listas.id'), nullable=False)
-     
-     def __repr__(self):
-        return f'Lista: id={self.id}, name={self.Direccion}'
-
-#db.create_all()
-
-class Lista(db.Model):
-     __tablename__ = 'listas'
-     id = db.Column(db.Integer, primary_key=True)
-     name= db.Column(db.String(), nullable=False)
-     sedes=db.relationship('Sede', backref='list', lazy= True)
-     
-     def __repr__(self):
-        return f'Lista: id={self.id}, name={self.name}'
-
-db.create_all()
-
+ 
 if __name__ == '__main__':
     lb.run(debug=True, port= 5000)
