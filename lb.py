@@ -122,7 +122,38 @@ class Tipo(db.Model):
      #id_curso=db.Column(db.Integer,db.ForeignKey('Menu.codigo'),nullable=False)
      def __repr__(self):
         return "Incripcion realizada"
+db.create_all()
+
+@lb.route('/dificultad/create', methods=['POST','GET'])
+def create_dificultad_post():
+
+   error = False
+   response = {}
+   dificultad= request.form.get('dificultad','')
+
+   try:
+          dificultad= request.form.get('dificultad','')
+
+        
+          pasar = Tipo(dificultad=dificultad)
+        
+          db.session.add(pasar)
+          db.session.commit()
+   except:
+        error = True
+        db.session.rollback()
+        print(sys.exc_info())
+   finally:
+        db.session.close()
+   if error:
+        abort(500)
+    
+   else:
+        
+     return render_template('intermedio.html')
+
 #4to modelo
+
 class Profesores(db.Model):
      __tablename__ = 'profesores'
      codigo = db.Column(db.Integer, primary_key=True)
@@ -162,38 +193,6 @@ def create_profesores_post():
    else:
      return render_template('index.html')
 
-
-
-db.create_all()
-
-
-@lb.route('/dificultad/create', methods=['POST','GET'])
-def create_dificultad_post():
-
-   error = False
-   response = {}
-   dificultad= request.form.get('dificultad','')
-
-   try:
-          dificultad= request.form.get('dificultad','')
-
-        
-          pasar = Tipo(dificultad=dificultad)
-        
-          db.session.add(pasar)
-          db.session.commit()
-   except:
-        error = True
-        db.session.rollback()
-        print(sys.exc_info())
-   finally:
-        db.session.close()
-   if error:
-        abort(500)
-    
-   else:
-        
-     return render_template('intermedio.html')
  
 if __name__ == '__main__':
     lb.run(debug=True, port= 5000)
