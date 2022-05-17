@@ -26,15 +26,6 @@ class Menu(db.Model):
     
 
 #db.create_all()
-
-@lb.route('/lists/<list_id>')
-def get_list_listas(list_id):
-     return  render_template('tipoElegir.html',
-            lists= Lista.query.all(),
-            sedes= Sede.query.filter_by(list_id = list_id).order_by('id').all(),
-            profesores = Profesor.query.filter_by(list_id = list_id).order_by('id').all()
-          )
-     
 @lb.route('/')      
 def index():    
 
@@ -95,8 +86,6 @@ class registro(db.Model):
      def __repr__(self):
           return f'nombre={self.nombre}, apellido={self.apellido}, edad={self.edad}, colegio={self.colegio}, numero={self.numero}'
 #db.create_all()
-
-
 @lb.route('/registros/create', methods=['POST','GET'])
 def create_registro_post():
 

@@ -15,7 +15,6 @@
   + Migrate : Ya que al momento de crear al aplicacion web siempre se aumentaban modelos por ende usamos el migrate para poder crearlas.
 * Endpoints:
   + '/' : Nos redirecciona al incio del aplicacion .
-  + '/lists/<list_id>' : Nos manda a la lista con un numero de id
   + '/registros/create' : Redirecciona los datos ingresado en el html hacia la base de datos y los guarda.
   + '/dificultad/create' : Redirecciona los datos de dificultad ingresada en el html hacia la base de datos y los guarda.
   + "/lists/1" : Extrae de la base de datos los datos de las sedes
