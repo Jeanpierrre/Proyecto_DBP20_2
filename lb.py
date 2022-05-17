@@ -43,6 +43,17 @@ def index():
 
      return render_template('inicio_0.html',mensaje=[''])
 
+#direccion para contactos y nosotros
+@lb.route('/contactos/',methods=['GET'])
+def contactos():
+     return render_template('contactos.html')  
+     
+
+@lb.route('/nosotros/',methods=['GET'])
+def nosotros():
+     return render_template('nosotros.html')   
+
+
 @lb.route('/usuario/create', methods=['POST','GET'])
 def create_prueba_post():
    error = False
@@ -109,11 +120,13 @@ def create_registro_post():
           for a in str(edad):
                if(a=='-'):
                     return render_template('datos_registrar.html',mensaje=['No ingreses valores negativos'])
-          
+
+          if(len(str(numero))!= 9 ):
+                return render_template('datos_registrar.html',mensaje=['El numero debe tener 9 dijitos'])
+                
           for a in str(numero):
                if(a=='-'):
                     return render_template('datos_registrar.html',mensaje=['No ingreses valores negativos'])
-
           pasar = registro(nombre=nombre,apellido=apellido,edad=edad,colegio=colegio,numero=numero)
         
           db.session.add(pasar)
@@ -154,10 +167,7 @@ def create_dificultad_post():
    id_usuario=guardar[-1]
    try:
           dificultad= request.form.get('dificultad','')
-
-        
           pasar = Tipo(dificultad=dificultad,id_usuario=id_usuario)
-        
           db.session.add(pasar)
           db.session.commit()
    except:

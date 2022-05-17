@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-       header{
+   header{
             display:flex;
             min-height:70px;
             background-color: rgb(60, 114, 156);
@@ -59,6 +59,28 @@
             height: 100vh; 
             
         }
+        .nombre-empresa{
+            align-items: center;
+            display: flex;
+            height: 60px;
+            justify-content: center;
+            width: 500px;
+            padding-left: 490px;
+            color : rgb(150, 235, 21);
+            font-size: 30px;
+        }
+        h2{
+            width: 250px;
+            height: 100px;
+          
+            position: absolute;
+            top:10px;
+            left: 20px;
+            color: black;
+            font-size:22px ;
+            margin-bottom: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
         .cuadro{
             width: 600px;
             height: 300px;
@@ -89,7 +111,7 @@
             margin-bottom: 20px;
             font-family: 'Times New Roman', Times, serif;
         }
-
+        
 
 
 
@@ -99,15 +121,14 @@
 </head>
 <body>
     <header>
-        <div class="logo">          
-             <img src="https://w7.pngwing.com/pngs/485/25/png-transparent-foreign-language-english-language-verb-part-of-speech-ingles-logo-word-course.png" alt="logo de la compañia" class="logo-img">
-            <h2 class="nombre-empresa"> Cursos ingles</h2>
-        </div>
-
+        <a class="logo">
+            <img src="https://w7.pngwing.com/pngs/485/25/png-transparent-foreign-language-english-language-verb-part-of-speech-ingles-logo-word-course.png" alt="logo de la compañia" class="logo-img">
+            <h2 class="nombre-empresa"> English Express </h2>
+        </a>
         <nav>
-            <a href="http://127.0.0.1:5000/Proyecto_DBP20_2/templates/inicio_0.html" class="nav-link">Inicio</a>
-            <a href="http://127.0.0.1:5000/Proyecto_DBP20_2/templates/nosotros.html" class="nav-link">Sobre Nosotros</a>
-            <a href="http://127.0.0.1:5000/Proyecto_DBP20_2/templates/contactos.html" class="nav-link">Contactos</a>
+            <a href="http://127.0.0.1:5000" class="nav-link">Inicio</a>
+            <a href="/nosotros/"  class="nav-link">Sobre Nosotros</a>    
+            <a href="/contactos/"  class="nav-link">Contactos</a>
         </nav>
 
     </header>
