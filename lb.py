@@ -6,6 +6,7 @@ from flask import render_template,request,abort,jsonify
 from flask_sqlalchemy import SQLAlchemy 
 import sys
 from flask_migrate import Migrate
+
 #escribir
 def escribir(codigo):
      with open("codigo.txt","a") as escri:
@@ -23,6 +24,7 @@ lb.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(lb) 
 migrate = Migrate(lb, db)
 #primer modelo
+
 class Menu(db.Model):
     __tablename__ = 'usuario'
     codigo = db.Column(db.Integer, primary_key=True)
@@ -52,16 +54,13 @@ def index():
 def create_prueba_post():
    error = False
    response = {}
-   name = request.form.get('name','')
-   contraseña = request.form.get('contraseña','')
-   if(contraseña==''):
-        return render_template('inicio_0.html')
+
    try:
         id= request.form.get('id','')
         name = request.form.get('name','')
-
-        
         contraseña = request.form.get('contraseña','')
+        if(contraseña==''):
+             return render_template('inicio_0.html')
 
         pasar = Menu(name=name,contraseña=contraseña)
         
@@ -94,7 +93,7 @@ class registro(db.Model):
      edad = db.Column(db.Integer, nullable=False)
      colegio=db.Column(db.String(),nullable=False)
      numero=db.Column(db.Integer, nullable=False)
-     #id_curso=db.Column(db.Integer,db.ForeignKey('Menu.codigo'),nullable=False)
+
      def __repr__(self):
         return "Incripcion realizada"
 
@@ -106,11 +105,6 @@ def create_registro_post():
 
    error = False
    response = {}
-   nombre= request.form.get('nombre','')
-   apellido= request.form.get('apellido','')
-   edad=request.form.get('edad','')
-   colegio=request.form.get('colegio','')
-   numero=request.form.get('numero','')
    try:
           edad=request.form.get('edad','')
           colegio=request.form.get('colegio','')
@@ -143,7 +137,7 @@ class Tipo(db.Model):
      id = db.Column(db.Integer, primary_key=True)
      dificultad= db.Column(db.String(), nullable=False)
      id_usuario=db.Column(db.String(), nullable=False)
-     #id_curso=db.Column(db.Integer,db.ForeignKey('Menu.codigo'),nullable=False)
+
      def __repr__(self):
         return "Incripcion realizada"
 db.create_all()
