@@ -61,9 +61,7 @@ def create_prueba_post():
         name = request.form.get('name','')
         contraseña = request.form.get('contraseña','')
         if(name=='' or contraseña==''):
-
              return render_template('inicio_0.html',mensaje=['No dejes ningun espacio en blanco'])
-
         pasar = Menu(name=name,contraseña=contraseña)
         
         db.session.add(pasar)
