@@ -6,17 +6,9 @@ from flask import render_template,request,abort,jsonify
 from flask_sqlalchemy import SQLAlchemy 
 import sys
 from flask_migrate import Migrate
-
+guardar=[]
+mensaje=[]
 #escribir
-def escribir(codigo):
-     with open("codigo.txt","a") as escri:
-          escri.write(codigo)
-          escri.write("\n")
-     return ""
-#leer
-def leer():
-       with open("codigo.txt","r") as archivo:
-          return archivo.readlines()[-1]
           
 lb = Flask(__name__)
 lb.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://postgres:1234@localhost:5432/proyecto'
@@ -36,7 +28,7 @@ class Menu(db.Model):
         return f'codigo={self.codigo}, name={self.name}'
     
 
-db.create_all()
+#db.create_all()
 
 @lb.route('/lists/<list_id>')
 def get_list_listas(list_id):
@@ -48,7 +40,8 @@ def get_list_listas(list_id):
      
 @lb.route('/')      
 def index():    
-     return render_template('inicio_0.html')
+
+     return render_template('inicio_0.html',mensaje=[''])
 
 @lb.route('/usuario/create', methods=['POST','GET'])
 def create_prueba_post():
@@ -59,8 +52,9 @@ def create_prueba_post():
         id= request.form.get('id','')
         name = request.form.get('name','')
         contraseña = request.form.get('contraseña','')
-        if(contraseña==''):
-             return render_template('inicio_0.html')
+        if(name=='' or contraseña==''):
+
+             return render_template('inicio_0.html',mensaje=['No dejes ningun espacio en blanco'])
 
         pasar = Menu(name=name,contraseña=contraseña)
         
@@ -78,10 +72,8 @@ def create_prueba_post():
    else:
      codigo=list(Menu.query.all())
      pasar_codigo=str(codigo[-1].codigo)
-     print("el codigo es:")
-
-     escribir(pasar_codigo)   
-     return render_template('datos_registrar.html',  da=Menu.query.all())
+     guardar.append(pasar_codigo) 
+     return render_template('datos_registrar.html',  da=Menu.query.all(),mensaje=[''])
 
 
 #Segundo modelo
@@ -95,9 +87,8 @@ class registro(db.Model):
      numero=db.Column(db.Integer, nullable=False)
 
      def __repr__(self):
-        return "Incripcion realizada"
-
-db.create_all()
+          return f'nombre={self.nombre}, apellido={self.apellido}, edad={self.edad}, colegio={self.colegio}, numero={self.numero}'
+#db.create_all()
 
 
 @lb.route('/registros/create', methods=['POST','GET'])
@@ -111,7 +102,18 @@ def create_registro_post():
           nombre= request.form.get('nombre','')
           apellido= request.form.get('apellido','')
           numero=request.form.get('numero','')
-        
+
+          if(nombre=='' or colegio=='' or apellido=='' ):
+               return render_template('datos_registrar.html',mensaje=['No dejes ningun espacio en blanco'])
+
+          for a in str(edad):
+               if(a=='-'):
+                    return render_template('datos_registrar.html',mensaje=['No ingreses valores negativos'])
+          
+          for a in str(numero):
+               if(a=='-'):
+                    return render_template('datos_registrar.html',mensaje=['No ingreses valores negativos'])
+
           pasar = registro(nombre=nombre,apellido=apellido,edad=edad,colegio=colegio,numero=numero)
         
           db.session.add(pasar)
@@ -127,7 +129,7 @@ def create_registro_post():
 
    else:
         
-     return render_template('tipoElegir.html',  da=[nombre,apellido])
+     return render_template('tipoElegir.html',  data=registro.query.all())
 
 
 
@@ -139,8 +141,8 @@ class Tipo(db.Model):
      id_usuario=db.Column(db.String(), nullable=False)
 
      def __repr__(self):
-        return "Incripcion realizada"
-db.create_all()
+          return f'dificultad={self.dificultad}'
+#db.create_all()
 
 @lb.route('/dificultad/create', methods=['POST','GET'])
 def create_dificultad_post():
@@ -149,7 +151,7 @@ def create_dificultad_post():
    response = {}
    dificultad= request.form.get('dificultad','')
 
-   id_usuario=leer()
+   id_usuario=guardar[-1]
    try:
           dificultad= request.form.get('dificultad','')
 
@@ -169,7 +171,8 @@ def create_dificultad_post():
     
    else:
         
-     return render_template('final.html')
+     return render_template('final.html',registro=registro.query.all(),
+     dificultad=Tipo.query.all() )
 
 
 class Sede(db.Model):
@@ -182,7 +185,7 @@ class Sede(db.Model):
      def __repr__(self):
         return f'Lista: id={self.id}, name={self.Direccion}'
 
-db.create_all()
+#db.create_all()
 
 
 class Lista(db.Model):
@@ -194,7 +197,7 @@ class Lista(db.Model):
      def __repr__(self):
         return f'Lista: id={self.id}, name={self.name}'
 
-db.create_all()
+#db.create_all()
 
 #4to modelo
 
