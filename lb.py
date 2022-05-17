@@ -6,6 +6,17 @@ from flask import render_template,request,abort,jsonify
 from flask_sqlalchemy import SQLAlchemy 
 import sys
 from flask_migrate import Migrate
+#escribir
+def escribir(codigo):
+     with open("codigo.txt","a") as escri:
+          escri.write(codigo)
+          escri.write("\n")
+     return ""
+#leer
+def leer():
+       with open("codigo.txt","r") as archivo:
+          return archivo.readlines()[-1]
+          
 lb = Flask(__name__)
 lb.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://postgres:1234@localhost:5432/proyecto'
 lb.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -23,7 +34,7 @@ class Menu(db.Model):
         return f'codigo={self.codigo}, name={self.name}'
     
 
-#db.create_all()
+db.create_all()
 
 @lb.route('/lists/<list_id>')
 def get_list_listas(list_id):
@@ -65,7 +76,11 @@ def create_prueba_post():
         abort(500)
 
    else:
-        
+     codigo=list(Menu.query.all())
+     pasar_codigo=str(codigo[-1].codigo)
+     print("el codigo es:")
+
+     escribir(pasar_codigo)   
      return render_template('datos_registrar.html',  da=Menu.query.all())
 
 
@@ -82,7 +97,7 @@ class registro(db.Model):
      def __repr__(self):
         return "Incripcion realizada"
 
-#db.create_all()
+db.create_all()
 
 
 @lb.route('/registros/create', methods=['POST','GET'])
@@ -126,11 +141,11 @@ class Tipo(db.Model):
      __tablename__ = 'dificultad'
      id = db.Column(db.Integer, primary_key=True)
      dificultad= db.Column(db.String(), nullable=False)
-    
+     id_usuario=db.Column(db.String(), nullable=False)
      #id_curso=db.Column(db.Integer,db.ForeignKey('Menu.codigo'),nullable=False)
      def __repr__(self):
         return "Incripcion realizada"
-#db.create_all()
+db.create_all()
 
 @lb.route('/dificultad/create', methods=['POST','GET'])
 def create_dificultad_post():
@@ -139,11 +154,12 @@ def create_dificultad_post():
    response = {}
    dificultad= request.form.get('dificultad','')
 
+   id_usuario=leer()
    try:
           dificultad= request.form.get('dificultad','')
 
         
-          pasar = Tipo(dificultad=dificultad)
+          pasar = Tipo(dificultad=dificultad,id_usuario=id_usuario)
         
           db.session.add(pasar)
           db.session.commit()
@@ -158,7 +174,7 @@ def create_dificultad_post():
     
    else:
         
-     return render_template('intermedio.html')
+     return render_template('final.html')
 
 
 class Sede(db.Model):
@@ -171,7 +187,7 @@ class Sede(db.Model):
      def __repr__(self):
         return f'Lista: id={self.id}, name={self.Direccion}'
 
-#db.create_all()
+db.create_all()
 
 
 class Lista(db.Model):
@@ -183,7 +199,7 @@ class Lista(db.Model):
      def __repr__(self):
         return f'Lista: id={self.id}, name={self.name}'
 
-#db.create_all()
+db.create_all()
 
 #4to modelo
 
@@ -197,7 +213,7 @@ class Profesor(db.Model):
      def __repr__(self):
         return f'Lista: id={self.id}, nombre={self.nombre},apellido={self.apellido},dificultad={self.dificultad}'
 
-#db.create_all()
+db.create_all()
 
  
 if __name__ == '__main__':

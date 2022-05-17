@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        header{
+         header{
             display:flex;
             min-height:70px;
             background-color: rgb(60, 114, 156);
@@ -61,7 +61,7 @@
         }
         .inicio-arriba{
             width: 320x;
-            height: 40px;
+            height: 60px;
             background: rgb(209, 98, 19);
             color:#fff;
             top: 185px;
@@ -114,27 +114,7 @@
             margin-bottom: 20px;
             font-family: 'Times New Roman', Times, serif;
         }
-        /* */
-        .inicio-basico .avatar{
-            width: 150px;
-            height: 70px;
-          
-            position: absolute;
-            top:10px;
-            left: 50px;
-        }
-        .inicio-basico a{
-            color:white;
-            text-decoration: none;
-        }
-        .inicio-basico a:hover{
-            color:black;
-            
-            text-decoration: underline;
-
-
-        }
-
+      
    
         .inicio-intermedio{
             width: 320px;
@@ -205,7 +185,7 @@
             background:rgb(65, 197, 41);
             border-radius:20px;
         }
-        h1{
+         h1{
             width: 250px;
             height: 100px;
           
@@ -229,34 +209,7 @@
             margin-bottom: 20px;
             font-family: 'Times New Roman', Times, serif;
         }
-
-        .tabla .tabla-imagen{
-            width: 320px;
-            height: 200px;
-            top: 200px;
-            left: 300px;
-            padding: 340px 530px;
-          
-        }
-        .dificultad{
-            width: 450px;
-            height: 10px;
-            top: 300px;
-            left: 200px;
-            padding: 10px 533px;
-            color: white;
-            border:2px solid rgb(19, 19, 131);
-            font-family: 'Times New Roman', Times, serif;
-        
-            background-image: url(https://cdn.pixabay.com/photo/2016/01/27/15/25/space-1164579_1280.png) ;
-        }
-        body{
-            font-family: sans-serif;
-            margin:0;
-            background:url(https://img.freepik.com/vector-gratis/acuarela-copia-espacio-fondo-azul-degradado_23-2148475453.jpg?w=2000) no-repeat center top;
-            background-size: cover;
-        }
-</style>
+    </style>
 </head>
 <body>
     <header>
@@ -270,98 +223,86 @@
             <a href="" class="nav-link">Contactos</a>
         </nav>
     </header>
-       <!-- margin:0px;
-            padding: 0px;
-            background-color: khaki;
-            height: 100vh; 
-            -->
-        <ul>
-    
-
-            {{da[0] + da[1]}} , por favor eligue tu curso.
-         
-           
-        </ul>
-
-
-        <div class="inicio-basico">
-            <h1>
-                Basico
-            </h1>
-            
-        </div>
-        <div class="basico-abajo">
-            <h2>
-                Perfil:
-                <br>
-                Conocimientos muy básicos o nulos del ingles.
-                <br>
-                Necesidades personales o laborales.
-            </h2>
-        </div>
-
-        <div class="inicio-intermedio">
-            <h1>
-             Intermedio    
-            </h1>
-           
-                
-            
-        </div>
-
-       
-        </a>
-        <div class="intermedio-abajo">
-            <h2>
-                Perfil:
-                <br>
-                Conocimientos básicos afianzados. 
-                Necesidades / Deseo de mejorar el uso del idioma.
-                <br>
-                Necesidades personales o laborales.
-            </h2>
-        </div>
-
-        <div class="inicio-avanzado">
-            <h1>
-                Avanzado
-            </h1>
-                    
-        </div>
-        <div class="avanzado-abajo">
-            <h2>
-                Perfil:
-                <br>
-                Conocimientos avanzados de inglés 
-                con necesidades de mejorar/perfeccionar el dominio del 
-                idioma
-                <br>
-         
-            </h2>
-        </div>
-
-               
-           
+    <div class="inicio-basico">
+        <h1>
+            Jean Pierre
+        </h1>
         
-        <div class="dificultad">
-            <form id="form" action="/dificultad/create" method="POST">
-                <!--usuario-->
-               
-                Selecciona el tipo de nivel que tienes:
-                
-                <select id="tipo" name="dificultad">
-                    <option value="Basico">Basico</option>
-                    <option value="Intermedio">Intermedio</option>
-                    <option value="Avanzado">Avanzado</option>
-                </select>
-                <input type="submit" value="Elegir">
-            </form>
-        </div>
+    </div>
+    <div class="basico-abajo">
+        <h2>
+            Correo:
+            <a href="https://mail.google.com/">jean.sotomayor@utec.edu.pe</a>
+            <br>
+            Numero:
+            <br>
+            970593746
+            <br>
+            Horario de atención:
+            <br>
+            Miercoles de 10 a 12 pm.
+            <br>
+            Especialidad:
+            <br>
+            Front end.
+        </h2>
+    </div>
 
-        <div class="tabla">
-            <img class="tabla-imagen" src="https://www.stjames.es/sites/default/files/academia_ingles_cursos_intensivos_b2.jpg">
-        </div>
-    
+    <div class="inicio-intermedio">
+        <h1>
+         Stuart   
+        </h1>
+       
+            
+        
+    </div>
+
+   
+    </a>
+    <div class="intermedio-abajo">
+        <h2>
+            Correo:
+            <a href="https://mail.google.com/">stuart.arteaga@utec.edu.pe</a>
+            <br>
+            Numero:
+            <br>
+            970521468
+            <br>
+            Horario de atención:
+            <br>
+            Lunes de 8 a 10 pm.
+            <br>
+            Especialidad:
+            <br>
+            Back end.
+        </h2>
+    </div>
+
+    <div class="inicio-avanzado">
+        <h1>
+            Diego
+        </h1>
+                
+    </div>
+    <div class="avanzado-abajo">
+        <h2>
+            Correo:
+            <a href="https://mail.google.com/">diego.rivadeneyra@utec.edu.pe</a>
+            <br>
+            Numero:
+            <br>
+            981057954
+            <br>
+            Horario de atención:
+            <br>
+            Sabado de 2 a 4 pm.
+            <br>
+            Especialidad:
+            <br> 
+            Back end.
+        </h2>
+    </div>
+
     
 </body>
 </html>
