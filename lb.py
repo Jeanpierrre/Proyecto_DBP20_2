@@ -129,7 +129,7 @@ def create_registro_post():
 
    else:
         
-     return render_template('tipoElegir.html',  data=registro.query.all())
+     return render_template('tipoElegir.html')
 
 
 
@@ -211,7 +211,13 @@ class Profesor(db.Model):
      def __repr__(self):
         return f'Lista: id={self.id}, nombre={self.nombre},apellido={self.apellido},dificultad={self.dificultad}'
 
-db.create_all()
+@lb.route("/lists/2")
+def mostrar():
+     return render_template('tipoElegir.html',data=Profesor.query.all()) # obtenemos todos los objetos de todo
+@lb.route("/lists/1")
+def mostrar2():
+     return render_template('tipoElegir.html',data2=Sede.query.all()) # obtenemos todos los objetos de todo
+#db.create_all()
 
  
 if __name__ == '__main__':

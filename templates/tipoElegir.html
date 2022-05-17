@@ -283,10 +283,20 @@
             justify-content: center;
             width: 1500px;
             color : rgb(150, 235, 21);
-            font-size: 30px;
+            font-size: 30px;}
 
-
-        }
+        .box1 {
+            top:80%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 25px 35px;
+            font-size: 25px;
+            color : rgb(199, 88, 41);
+            font-weight: bold;     
+            text-align: justify;           }  
+        
         body{
             font-family: sans-serif;
             margin:0;
@@ -302,17 +312,32 @@
             <h2 class="nombre-empresa"> English Express </h2>
         </a>
         <nav>
-            <a href="http://127.0.0.1:5501/templates/inicio_0.html" class="nav-link">Inicio</a>
-            <a href="http://127.0.0.1:5501/templates/nosotros.html" class="nav-link">Sobre Nosotros</a>
-            <a href="avanzado.html" class="nav-link">Contactos</a>
+            <a href="http://127.0.0.1:5000/Proyecto_DBP20_2/templates/inicio_0.html" class="nav-link">Inicio</a>
+            <a href="http://127.0.0.1:5000/Proyecto_DBP20_2/templates/nosotros.html" class="nav-link">Sobre Nosotros</a>
+            <a href="http://127.0.0.1:5000/Proyecto_DBP20_2/templates/contactos.html" class="nav-link">Contactos</a>
         </nav>
+
     </header>
        <!-- margin:0px;
             padding: 0px;
             background-color: khaki;
             height: 100vh; 
             -->
-
+            <div class="box1"  >
+                <ul id ="profesor"> 
+                    {% for d in data %} 
+                    <li>{{d.nombre + "  " + d.apellido + "  enseña el nivel :  " +d.dificultad }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="box1" >
+                <ul id ="sede"> 
+                    {% for d in data2 %} 
+                    <li>{{d.Distrito + " - " + d.Direccion}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
         <div class="inicio-basico">
             <h1>
                 Basico
