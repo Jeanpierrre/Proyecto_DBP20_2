@@ -1,6 +1,3 @@
-from token import LBRACE
-from turtle import back
-from unicodedata import name
 from flask import Flask, redirect, url_for
 from flask import render_template,request,abort,jsonify 
 from flask_sqlalchemy import SQLAlchemy 
@@ -120,10 +117,12 @@ def create_registro_post():
           for a in str(edad):
                if(a=='-'):
                     return render_template('datos_registrar.html',mensaje=['No ingreses valores negativos'])
-
+ 
           if(len(str(numero))!= 9 ):
                 return render_template('datos_registrar.html',mensaje=['El numero debe tener 9 dijitos'])
-                
+          if (len(str(edad)) !=  2):
+               return render_template('datos_registrar.html',mensaje=['La edad debe tener 2 digitos'])
+    
           for a in str(numero):
                if(a=='-'):
                     return render_template('datos_registrar.html',mensaje=['No ingreses valores negativos'])
@@ -227,7 +226,7 @@ def mostrar():
 @lb.route("/lists/1")
 def mostrar2():
      return render_template('tipoElegir.html',data2=Sede.query.all()) # obtenemos todos los objetos de todo
-#db.create_all()
+db.create_all()
 
  
 if __name__ == '__main__':
