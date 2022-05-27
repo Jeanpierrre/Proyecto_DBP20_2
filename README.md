@@ -22,3 +22,5 @@
 * Host : http://127.0.0.1:5000 
 * Manejo de errores : Los errores que manejamos en los html fueron tratados con condicionales if como en el numero que tenga solo 9 digitos,
   que la edad no sea negativa y que no se deje ningun espacio en blanco, entre otros.En el caso del lb.py colocamos las condiciones de que si sucede un error entonces hace un rollback y muestra un error 500.
+* Licencia:
+  - La licencia que usaremos sera la licencia MIT teniendo en cuenta que nuestro programa es open source. Porque la copia que realizen otros  usuarios pueden hacer una copia y cambiar la licencia si desean.

@@ -213,7 +213,7 @@ def mostrar():
 @lb.route("/lists/1")
 def mostrar2():
      return render_template('tipoElegir.html',data2=Sede.query.all()) # obtenemos todos los objetos de todo
-db.create_all()
+#db.create_all()
 
  
 if __name__ == '__main__':
