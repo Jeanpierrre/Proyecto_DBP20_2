@@ -1,4 +1,8 @@
 <template>
+  <NavBar />
+  <div class="marco">
+    <h1>aa</h1>
+  </div>
   <div class="home">
     <div class="todos">
       <div v-for="todo in todos" :key="todo.id">
@@ -22,14 +26,17 @@
 <script>
 // @ is an alias to /src
 import store from "@/store";
-
+import NavBarVue from "@/components/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
 export default {
   name: "Home",
   data() {
     return {
       todos: store.todos,
+      NavBarVue,
     };
   },
+  components: { NavBar },
 };
 </script>
 
@@ -47,12 +54,26 @@ img {
 
 .todos {
   display: flex;
-  background-attachment: coral;
+  background: rgb(28, 57, 221);
   justify-content: space-between;
 }
 
 a {
   color: lightseagreen;
   text-decoration: none;
+}
+.marco {
+  z-index: -200;
+  width: 320px;
+  height: 40px;
+  background: rgb(238, 246, 0);
+  color: #fff;
+  top: 30%;
+  left: 20%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 25px 35px;
+  border-radius: 10px;
 }
 </style>

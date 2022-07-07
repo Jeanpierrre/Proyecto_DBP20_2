@@ -1,6 +1,8 @@
 <template>
-  <Navegacion />
-  <router-view :key="$route.path" />
+  <body>
+    <Navegacion />
+    <router-view :key="$route.path" />
+  </body>
 </template>
 
 <script>
@@ -34,5 +36,16 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+
+  background-size: cover;
+  margin: 0px;
+  padding: 0px;
+  z-index: -200;
+  background: rgb(209, 98, 19);
+  height: 100vh;
 }
 </style>

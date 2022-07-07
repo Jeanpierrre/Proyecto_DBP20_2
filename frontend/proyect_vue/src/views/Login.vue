@@ -1,16 +1,18 @@
 <template>
-  <div>
+  <div class="login-caja">
+    <img
+      class="avatar"
+      src="https://e6.pngbyte.com/pngpicture/533159/png-Login-Clipart-Thumb-Image-user-login-png-transparent.png"
+      alt="Ingresar Logo"
+    />
     <h1>Login</h1>
-    <p>Hello {{ name }}</p>
-    <form @submit.prevent="login">
-      <input v-model="codigo" placeholder="Enter your name" /><br />
-      <input
-        v-model="password"
-        type="password"
-        placeholder="Enter your password"
-      /><br />
-      <button type="submit">Login</button>
-    </form>
+    <input v-model="username" placeholder="Enter your name" /><br />
+    <input
+      v-model="password"
+      type="password"
+      placeholder="Enter your password"
+    />
+    <button @click="login()">Login</button>
   </div>
 </template>
 
@@ -25,31 +27,79 @@ export default {
   },
   methods: {
     async login() {
-      const url = "http://127.0.0.1:5000/login";
-      const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify({
-          codigo: this.username,
-          password: this.password,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      this.$router.push({
+        name: "registro",
       });
-      console.log("response: ", response);
-      const data = await response.json();
-      console.log("data: ", data);
-      if (data["success"]) {
-        this.$router.push({
-          name: "Todos-Manager",
-          params: {
-            username: data["profile"]["name"],
-          },
-        });
-      }
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.login-caja {
+  width: 320px;
+  height: 420px;
+  background: black;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+}
+.login-caja .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50%-50px);
+}
+.login-caja label {
+  margin: 0px;
+  padding: 0px;
+  font-weight: bold;
+  display: block;
+}
+.login-caja h1 {
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.login-caja input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.login-caja input[type="text"],
+.login-caja input[type="password"] {
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: white;
+  font-size: 16px;
+}
+
+.login-caja input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: #b80f22;
+  color: white;
+  font-size: 18px;
+  border-radius: 20px;
+}
+.login-caja a {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgb(117, 77, 77);
+}
+.login-caja a:hover {
+  color: white;
+}
+</style>
