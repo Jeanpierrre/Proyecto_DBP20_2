@@ -6,7 +6,7 @@
       alt="Ingresar Logo"
     />
     <h1>Login</h1>
-    <input v-model="username" placeholder="Enter your name" /><br />
+    <input v-model="codigo" placeholder="Enter your name" /><br />
     <input
       v-model="password"
       type="password"
@@ -21,7 +21,7 @@ export default {
   name: "Login",
   data() {
     return {
-      username: "",
+      codigo: "",
       password: "",
     };
   },

@@ -298,6 +298,30 @@ def create_app(test_config=None):
             'message': "Closed session"
         })
 
+    @app.route('/login', methods=['POST'])
+    def login2():
+        error404=False
+        try:
+            body = request.get_json()
+            codigo = body.get('codigo',None)
+            password = body.get('password',None)
+            usuario=Usuario.query.filter(codigo==codigo).one_or_none()
+            if(usuario is None):
+                error404=True
+                abort(404)
+            if usuario:
+                if usuario.password==password:
+                    return jsonify({
+                    'success': True,
+                    'usuarios': usuario.format(),
+                    })
+        except Exception as e:
+            if error404==True:
+                abort(404)
+            else:
+                print(e)
+                abort(500)
+
 
     @app.errorhandler(403) #manejamos el error 404 , se debe mandar algo al cliente 
     def not_found(error):
@@ -354,4 +378,11 @@ def create_app(test_config=None):
             'message': 'Autenticacion requerida'
         }), 401  
         
+
+
+
+
+
+
+
     return app
