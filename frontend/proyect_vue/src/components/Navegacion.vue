@@ -10,6 +10,10 @@
           {{ todo.name }}
         </router-link>
       </li>
+      <li class="links">Administration</li>
+      <li class="links">
+        <router-link :to="{ name: 'Login' }"> Login </router-link>
+      </li>
     </ul>
   </div>
 </template>
