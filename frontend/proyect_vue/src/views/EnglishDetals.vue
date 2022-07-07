@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <div :style="{ 'background-image': 'url(.assets/wallpaper.jpg)' }">
+      <div>
         <h1>{{ todo.name }}</h1>
         <div class="todo-details">
           <img :src="require(`@/assets/${todo.image}`)" :alt="todo.name" />
@@ -41,12 +41,12 @@ export default {
   name: "EnglishDetals",
   data() {
     return {
-      todoId: this.$route.params.id,
+      slug: this.$route.params.slug,
     };
   },
   computed: {
     todo() {
-      return store.todos.find((t) => t.id === parseInt(this.todoId));
+      return store.todos.find((t) => t.slug === this.slug);
     },
   },
 };
@@ -64,9 +64,12 @@ img {
 .cards {
   display: flex;
   flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 .cards img {
-  max-height: 300px;
+  max-height: 250px;
 }
 
 .card {

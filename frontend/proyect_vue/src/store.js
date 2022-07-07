@@ -3,9 +3,25 @@ export default {
     {
       name: "Niveles",
       slug: "Niveles",
-      image: "logo.png",
-      description: "asdasdadasd",
+      image: "niveles.jpg",
       id: 1,
+      evidences: [
+        {
+          name: "Basico",
+          slug: "Basico",
+          image: "basico.png",
+        },
+        {
+          name: "Intermedio",
+          slug: "Intermedio",
+          image: "intermedio.png",
+        },
+        {
+          name: "Avanzado",
+          slug: "Avanzado",
+          image: "avanzado.jpg",
+        },
+      ],
     },
     {
       name: "Profesores",
@@ -62,7 +78,8 @@ export default {
     {
       name: "Contactos",
       slug: "contactos",
-      image: "logo.png",
+      image: "Contacto.png",
+      description: "Puedes comunicarte con nosotros por medio de Facebook",
       id: 5,
     },
   ],

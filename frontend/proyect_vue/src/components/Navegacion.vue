@@ -4,7 +4,9 @@
     <ul class="nav-links">
       <li class="links"><router-link to="/">Inicio</router-link> |</li>
       <li v-for="todo in todos" :key="todo.id" class="links">
-        <router-link :to="{ name: 'EnglishDetals', params: { id: todo.id } }">
+        <router-link
+          :to="{ name: 'EnglishDetals', params: { slug: todo.slug } }"
+        >
           {{ todo.name }}
         </router-link>
       </li>
