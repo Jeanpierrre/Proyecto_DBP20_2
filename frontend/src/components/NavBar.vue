@@ -1,17 +1,21 @@
 <template>
   <header>
-    <a class="logo">
+    <a class="img">
       <img
-        src="https://w7.pngwing.com/pngs/485/25/png-transparent-foreign-language-english-language-verb-part-of-speech-ingles-logo-word-course.png"
+        src="https://englishonlinetests.com/wp-content/uploads/2021/02/englishiseverywhere.png"
         alt="logo de la compañia"
         class="logo-img"
       />
       <h2 class="nombre-empresa">English Express</h2>
+      <h1 class="nombre-empresa">
+        Si deseas las mejores clases de inglés no dudes en registrarte, nos pondremos en contacto contigo y tendras un gran descuento
+        </h1>
     </a>
-    <nav>
-      <a href="http://127.0.0.1:5000" class="nav-link">Inicio</a>
-      <a href="/nosotros/" class="nav-link">Sobre Nosotros</a>
-      <a href="/contactos/" class="nav-link">Contactos</a>
-    </nav>
   </header>
 </template>
+
+<style scoped>
+img {
+  max-width: 500px;
+}
+</style>

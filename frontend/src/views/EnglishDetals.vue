@@ -25,7 +25,7 @@
           <span class="card_text">
             {{ evidence.name }}
           </span>
-          <div>
+          <div class="espacio">
             {{ evidence.description }}
           </div>
         </div>
@@ -60,13 +60,19 @@ img {
 .todo_details {
   display: flex;
   justify-content: space-between;
+  white-space: pre;
 }
 .cards {
   display: flex;
   flex-direction: row;
   margin-left: auto;
   margin-right: auto;
+  justify-content: center;
   width: 50%;
+}
+
+.espacio {
+  white-space: pre-line;
 }
 .cards img {
   max-height: 250px;

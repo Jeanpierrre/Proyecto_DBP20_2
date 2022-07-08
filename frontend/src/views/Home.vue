@@ -1,24 +1,8 @@
 <template>
   <NavBar />
-  <div class="marco">
-    <h1>aa</h1>
-  </div>
   <div class="home">
     <div class="todos">
-      <div v-for="todo in todos" :key="todo.id">
-        <router-link
-          :to="{ name: 'EnglishDetals', params: { slug: todo.slug } }"
-        >
-          <h2>{{ todo.name }}</h2>
-        </router-link>
-        <figure>
-          <router-link
-            :to="{ name: 'EnglishDetals', params: { slug: todo.slug } }"
-          >
-            <img :src="require(`@/assets/${todo.image}`)" :alt="todo.name" />
-          </router-link>
-        </figure>
-      </div>
+      <div v-for="todo in todos" :key="todo.id"></div>
     </div>
   </div>
 </template>
@@ -54,7 +38,7 @@ img {
 
 .todos {
   display: flex;
-  background: rgb(28, 57, 221);
+  background: rgb(228, 159, 103);
   justify-content: space-between;
 }
 
@@ -77,3 +61,4 @@ a {
   border-radius: 10px;
 }
 </style>
+

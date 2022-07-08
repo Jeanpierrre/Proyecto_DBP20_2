@@ -3,10 +3,8 @@ export default {
     {
       name: "Niveles",
       slug: "Niveles",
-      image: "niveles.jpg",
+      image: "franja.png",
       id: 1,
-      description:
-        "Los niveles de inglés empleados se encuentran siempre de acuerdo con el marco común europeo de referencia para las lenguas, que incorporan elementos de gramática, vocabulario, lectura y pronunciación. Actualmente esta regulación consta de nueve niveles de inglés: A1, A2, A2+, B1, B1+, B2, B2+, C1 y C2.",
       evidences: [
         {
           name: "Basico",
@@ -28,21 +26,19 @@ export default {
     {
       name: "Profesores",
       slug: "profesores",
-      image: "profesor.jpg",
-      description:
-        "Los profesores tienen las siguientes perfiles: Licenciatura en inglés: Lingüística, Estudios Ingleses, Traducción, etc. Maestría en Lingüística, En Enseñanza del Inglés como Lengua Extranjera, Formación Profesional y Enseñanza de Idiomas. Formación en inglés.",
+      image: "franja.png",
       id: 2,
       evidences: [
         {
           name: "Jacob Brown",
           slug: "Jacob Brown",
-          image: "profe1.jpg",
+          image: "profe1.png",
           description: "Encargado del nivel basico",
         },
         {
           name: "Sophie Evans",
           slug: "Sophie Evans",
-          image: "profe2.jpg",
+          image: "profe2.png",
           description: "Encargado de nivel intermedio",
         },
         {
@@ -56,9 +52,7 @@ export default {
     {
       name: "Sedes",
       slug: "sedes",
-      image: "sede.jpg",
-      description:
-        "Sedes: En nuestras sucursales contaras con los mejores ambientes para poder estudiar, garantizando siempre tu integridad y seguridad para poder cumplir tu meta de aprender ingles.",
+      image: "franja.png",
       id: 3,
       evidences: [
         {
@@ -70,7 +64,7 @@ export default {
         {
           name: "Los Rosales",
           slug: "Los Rosales",
-          image: "los-rosales.png",
+          image: "sede.jpg",
           description: "Sede Miraflores",
         },
         {
@@ -84,25 +78,25 @@ export default {
     {
       name: "Nosotros",
       slug: "nosotros",
-      image: "nosotros.jpg",
+      image: "franja.png",
       id: 4,
       evidences: [
         {
-          name: "Jeanpier",
-          slug: "Jeanpier",
+          name: "Jeanpierre",
+          slug: "Jeanpierre",
           image: "perfil.png",
           description: "Encargado de crear frontend",
         },
         {
           name: "Stuart",
           slug: "Stuart",
-          image: "perfil.png",
+          image: "perfil2.jpeg",
           description: "Encargado de crear backend",
         },
         {
           name: "Diego",
           slug: "Diego",
-          image: "perfil.png",
+          image: "perfil3.jpg",
           description: "Encargado de crear backend",
         },
       ],
@@ -111,7 +105,8 @@ export default {
       name: "Contactos",
       slug: "contactos",
       image: "Contacto.png",
-      description: "Puedes comunicarte con nosotros por medio de Facebook",
+      description:
+        "Para cualquier duda contactacanos en el siguiente correo: englisheverywhere@gmail.com",
       id: 5,
     },
   ],

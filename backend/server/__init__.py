@@ -45,7 +45,7 @@ def create_app(test_config=None):
         return response
     
     @app.route('/usuarios/<int:rol>', methods=['GET'])
-    
+    @login_required 
     def get_usuarios(rol):
         print("aqui")
         try:
@@ -73,6 +73,7 @@ def create_app(test_config=None):
         except Exception as e:
         
             print(e)
+            abort(500)
     
     
     @app.route('/registros', methods=['POST'])
@@ -307,15 +308,25 @@ def create_app(test_config=None):
 
     @app.route('/login', methods=['POST'])
     def login2():
+
         error404=False
         try:
+
+
             body = request.get_json()
+ 
             codigo = body.get('codigo',None)
+  
             password = body.get('password',None)
-            usuario=Usuario.query.filter(codigo==codigo).one_or_none()
+        
+            usuario=Usuario.query.filter(Usuario.codigo==codigo).one_or_none()
+   
             if(usuario is None):
                 error404=True
+               
                 abort(404)
+         
+
             if usuario:
                 if check_password_hash(usuario.password,password):
                     return jsonify({

@@ -9,7 +9,7 @@
       <input type="password" v-model="password" required="" />
       <label>Password</label>
     </div>
-    <button @click="login()">
+    <button @click="login()" to="/">
       <span></span>
       <span></span>
       <span></span>
@@ -36,10 +36,8 @@
       placeholder="Enter your password"
     />
     <router-link to="/registro">Registrarme</router-link>
-
     <button @click="login()">Login</button>
   </div>
-
 */
 export default {
   name: "Login",
@@ -56,6 +54,7 @@ export default {
         method: "POST",
         body: JSON.stringify({
           codigo: this.codigo,
+          nombre:"",
           password: this.password,
         }),
         headers: {
@@ -64,7 +63,6 @@ export default {
       });
       console.log("response: ", response);
       const data = await response.json();
-
       console.log("data: ", data);
       if (data["success"]) {
         window.localStorage.setItem("user", JSON.stringify(data["usuarios"]));
@@ -79,14 +77,12 @@ export default {
 html {
   height: 100%;
 }
-
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   background: linear-gradient(#141e30, #243b55);
 }
-
 .login-box {
   position: absolute;
   top: 50%;
@@ -109,11 +105,9 @@ button {
   color: #fff;
   text-align: center;
 }
-
 .login-box .user-box {
   position: relative;
 }
-
 .login-box .user-box input {
   width: 100%;
   padding: 10px 0;
@@ -125,7 +119,6 @@ button {
   outline: none;
   background: transparent;
 }
-
 .login-box .user-box label {
   position: absolute;
   top: 0;
@@ -136,7 +129,6 @@ button {
   pointer-events: none;
   transition: 0.5s;
 }
-
 .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
   top: -20px;
@@ -144,7 +136,6 @@ button {
   color: #03e9f4;
   font-size: 12px;
 }
-
 .login-box button {
   position: relative;
   display: inline-block;
@@ -158,7 +149,6 @@ button {
   margin-top: 40px;
   letter-spacing: 4px;
 }
-
 .login-box button:hover {
   background: #03e9f4;
   color: #fff;
@@ -166,12 +156,10 @@ button {
   box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
     0 0 100px #03e9f4;
 }
-
 .login-box button span {
   position: absolute;
   display: block;
 }
-
 .login-box button span:nth-child(1) {
   top: 0;
   left: -100%;
@@ -180,18 +168,15 @@ button {
   background: linear-gradient(90deg, transparent, #03e9f4);
   animation: btn-anim1 1s linear infinite;
 }
-
 @keyframes btn-anim1 {
   0% {
     left: -100%;
   }
-
   50%,
   100% {
     left: 100%;
   }
 }
-
 .login-box button span:nth-child(2) {
   top: -100%;
   right: 0;
@@ -201,18 +186,15 @@ button {
   animation: btn-anim2 1s linear infinite;
   animation-delay: 0.25s;
 }
-
 @keyframes btn-anim2 {
   0% {
     top: -100%;
   }
-
   50%,
   100% {
     top: 100%;
   }
 }
-
 .login-box button span:nth-child(3) {
   bottom: 0;
   right: -100%;
@@ -222,18 +204,15 @@ button {
   animation: btn-anim3 1s linear infinite;
   animation-delay: 0.5s;
 }
-
 @keyframes btn-anim3 {
   0% {
     right: -100%;
   }
-
   50%,
   100% {
     right: 100%;
   }
 }
-
 .login-box button span:nth-child(4) {
   bottom: -100%;
   left: 0;
@@ -243,12 +222,10 @@ button {
   animation: btn-anim4 1s linear infinite;
   animation-delay: 0.75s;
 }
-
 @keyframes btn-anim4 {
   0% {
     bottom: -100%;
   }
-
   50%,
   100% {
     bottom: 100%;

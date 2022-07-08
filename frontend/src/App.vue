@@ -35,7 +35,7 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #403de0;
 }
 body {
   font-family: sans-serif;
@@ -45,7 +45,7 @@ body {
   margin: 0px;
   padding: 0px;
   z-index: -200;
-  background: rgb(209, 98, 19);
+  background: rgb(144, 218, 85);
   height: 100vh;
 }
 </style>

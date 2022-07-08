@@ -1,7 +1,7 @@
 <template>
-  <div class="datos-ingreso">
+  <div class="login-box">
     <h1>Formulario Registro</h1>
-
+    <div class="user-box">
     <input
       type="text"
       class="control"
@@ -57,6 +57,7 @@
       placeholder="Ingrese su colegio"
       v-model="colegio"
     />
+    </div>
     <br />
     Selecciona el tipo de nivel que tienes:
 
@@ -76,12 +77,12 @@
     <br />
     <p>Estoy de acuerdo con <a href="#">Terminos y condiciones</a></p>
 
-    <input
-      type="button"
-      @click="registro()"
-      class="submit"
-      value="Pasar datos"
-    />
+    <button @click="registro()"  router-link to="/details/Niveles">
+
+       Submit
+    </button>
+    <router-link to="/details/Niveles">Listo</router-link>
+    
   </div>
 </template>
 
@@ -130,3 +131,55 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  margin: 4em;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+</style>
+
