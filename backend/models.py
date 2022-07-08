@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 
 database_name = 'apiproyecto'
-database_path = 'postgresql://{}@{}/{}'.format('postgres:dev123', 'localhost:5432', database_name)
+database_path = 'postgresql://{}@{}/{}'.format('postgres:1234', 'localhost:5432', database_name)
 #'postgresql://postgres:1234@localhost:5432/todoapp10'
 db = SQLAlchemy()
 #Models
