@@ -33,7 +33,7 @@ def create_app(test_config=None):
     login_manager.init_app(app)
 
     setup_db(app)
-    CORS(app)
+    CORS(app,origins=['*'],max_age=10)
     app.secret_key = "123"
     @login_manager.user_loader
     def load_user(id):
@@ -44,14 +44,16 @@ def create_app(test_config=None):
         response.headers.add('Access-Control-Allow-Methods', 'GET,PATCH,POST,DELETE,OPTIONS')
         return response
     
-    @app.route('/usuarios', methods=['GET'])
-    @login_required 
-    def get_usuarios():
+    @app.route('/usuarios/<int:rol>', methods=['GET'])
+    
+    def get_usuarios(rol):
+        print("aqui")
         try:
-            if current_user.rol == 1 :
+            print("aqui 2")
+            if rol == 1:
                 selection = datos_usuario.query.order_by('id').all() 
                 usuarios = paginate(request, selection, False) #paginamos en formato json
-
+                print("aqui 3")
                 if len(usuarios) == 0:
                     abort(404) # 404 not found
 
@@ -61,7 +63,6 @@ def create_app(test_config=None):
                     'total_usuarios': len(selection) #cantidad de elementos todos
                 })
             else:
-                print(current_user.codigo)
                 usuario = datos_usuario.query.filter(datos_usuario.id == current_user.id).one_or_none()
                 
                 usuario_info = usuario.format()
@@ -70,8 +71,11 @@ def create_app(test_config=None):
                 'info_usuario': usuario_info
                 })
         except Exception as e:
+        
             print(e)
-    @app.route('/usuarios', methods=['POST'])
+    
+    
+    @app.route('/registros', methods=['POST'])
     def create_usuarios():
         body = request.get_json()
         codigo = body.get('codigo',None)
@@ -82,13 +86,13 @@ def create_app(test_config=None):
         edad = body.get('edad',None)
         colegio = body.get('colegio',None)
         dificultad = body.get('dificultad',None)
-        nombre_sede = body.get('nombre_sede',None)
+        nombre_sede = body.get('sede',None)
 
         try:
-            usuario = Usuario(codigo = codigo,password = generate_password_hash(password, method='sha256'))
+            usuario = Usuario(codigo = codigo,nombres=nombres,password = generate_password_hash(password, method='sha256'))
             datos_usuarios = datos_usuario(nombres=nombres,apellidos=apellidos,telefono=telefono,edad=edad,colegio=colegio,dificultad=dificultad,nombre_sede=nombre_sede)
-            new_todo_id = usuario.insert()
-            new_todo_id = datos_usuarios.insert()
+            new_usuario_id = usuario.insert()
+            new_datos_usuario_id = datos_usuarios.insert()
 
 
             selection = Usuario.query.order_by('id').all()
@@ -96,13 +100,16 @@ def create_app(test_config=None):
 
             return jsonify({
                 'success': True,
-                'created': new_todo_id,
+                'created': new_datos_usuario_id,
                 'usuarios': todos,
                 'total_usuarios': len(selection)
             })
         except Exception as e:
             print(e)
             abort(500)    
+
+
+    
     @app.route('/usuarios/<usuarios_id>', methods=['PATCH'])
     def update_todo(usuario_id):
         error_404 = False
@@ -310,10 +317,15 @@ def create_app(test_config=None):
                 error404=True
                 abort(404)
             if usuario:
-                if usuario.password==password:
+                if check_password_hash(usuario.password,password):
                     return jsonify({
                     'success': True,
                     'usuarios': usuario.format(),
+                    })
+                else:
+                    return jsonify({
+                        'success':False,
+                        'message':'contraseña errónea'
                     })
         except Exception as e:
             if error404==True:

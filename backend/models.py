@@ -18,6 +18,7 @@ class Usuario(UserMixin,db.Model):
     _tablename_ = 'usarios'
     id = db.Column(db.Integer, primary_key = True,autoincrement=True)
     codigo = db.Column(db.String(200), unique=True)
+    nombres = db.Column(db.String(200), nullable = False)
     password= db.Column(db.String(200), nullable = False)
     rol = db.Column(db.Integer,nullable = False, default = 0)
     def insert(self):
@@ -52,6 +53,7 @@ class Usuario(UserMixin,db.Model):
             'id': self.id,
             'codigo': self.codigo,
             'password':self.password,
+            'nombre':self.nombres,
             'rol': self.rol,
         }
 class datos_usuario(db.Model):
@@ -70,7 +72,8 @@ class datos_usuario(db.Model):
             db.session.add(self)
             db.session.commit()
             return self.id
-        except:
+        except Exception as e:
+            print(e)
             db.session.rollback()
         finally:
             db.session.close()

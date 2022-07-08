@@ -29,10 +29,18 @@ const routes = [
       ),
   },
   {
-    path: "/prueba/",
-    name: "prueba",
+    path: "/profile",
+    name: "profile",
     component: () =>
-      import(/* webpackChunkName: "prueba" */ "../views/loginPrueba.vue"),
+      import(/* webpackChunkName: "profileUser" */ "../views/Profile.vue"),
+  },
+  {
+    path: "/administrador",
+    name: "administrador",
+    component: () =>
+      import(
+        /* webpackChunkName: "administrador" */ "../views/Administrador.vue"
+      ),
   },
 ];
 const router = createRouter({
