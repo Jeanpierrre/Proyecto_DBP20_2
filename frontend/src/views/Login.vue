@@ -14,9 +14,17 @@
       <span></span>
       <span></span>
       <span></span>
-      Submit
+      Ingresar
     </button>
-    <router-link to="/registro">Registrarme</router-link>
+    <button><router-link to="/registro">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Registrarme
+      </router-link>
+    </button>
+    
   </div>
 </template>
 
