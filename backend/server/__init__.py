@@ -13,7 +13,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required,cu
 
 from models import setup_db, Usuario,datos_usuario,sede
 
-usuarios_PER_PAGE=5
+usuarios_PER_PAGE=10
 def paginate(request, selection, isDescendent):
     if isDescendent:
         start = len(selection) - usuarios_PER_PAGE
@@ -45,7 +45,6 @@ def create_app(test_config=None):
         return response
     
     @app.route('/usuarios/<int:rol>', methods=['GET'])
-    @login_required 
     def get_usuarios(rol):
         print("aqui")
         try:
@@ -56,7 +55,7 @@ def create_app(test_config=None):
                 print("aqui 3")
                 if len(usuarios) == 0:
                     abort(404) # 404 not found
-
+                print(usuarios)
                 return jsonify({
                     'success': True, #exitosamente
                     'Usuarios': usuarios, #todos los elementos de todos
@@ -71,9 +70,8 @@ def create_app(test_config=None):
                 'info_usuario': usuario_info
                 })
         except Exception as e:
-        
             print(e)
-            abort(500)
+            abort(403)
     
     
     @app.route('/registros', methods=['POST'])

@@ -4,7 +4,7 @@
 <template>
   <div>
     <h1>Nombres:</h1>
-    <div v-for="user in users" :key="user.id" class="n">
+    <div v-for="user in users" :key="user.id" class='n'>
         <h1>{{user.nombres}}</h1> 
     </div>
     <h2>Sede:</h2>
@@ -21,10 +21,14 @@
 </template>
 <script>
 import { ref, onMounted } from "vue";
+import {useRoute,useRouter} from 'vue-router';
+
 export default {
   setup() {
     let administrador = ref(null);
     let users = ref(null);
+    const router = useRouter();
+    const route = useRoute(); 
     async function fetchUsuarios(rol) {
       const res = await fetch(`http://127.0.0.1:5000/usuarios/${rol}`);
       const data = await res.json();
@@ -35,7 +39,12 @@ export default {
       administrador = administrador.value.split(',')
       console.log(administrador.slice(4));
       const rol= administrador.slice(4);
-      fetchUsuarios(rol[0].slice(-2,-1));
+      if (rol[0].slice(-2,-1) == 0){
+          router.push('/');
+      }else {
+        fetchUsuarios(rol[0].slice(-2,-1));
+      }
+      
     });
     return {
       administrador,
@@ -154,6 +163,7 @@ h3{
     color:white;
     border-radius:10px;
 }
+
 </style>
 
 

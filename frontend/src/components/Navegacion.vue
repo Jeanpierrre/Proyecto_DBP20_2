@@ -13,8 +13,11 @@
       <li class="links">
         <router-link to="/administrador">Administration</router-link>
       </li>
-      <li class="links">
+      <li v-if="administrador==null" class="links">
         <router-link :to="{ name: 'Login' }"> Login </router-link>
+      </li>
+      <li v-else class="links">
+        <button @click="logout()">Logout</button>
       </li>
     </ul>
   </div>
@@ -22,12 +25,21 @@
 
 <script>
 import store from "@/store";
-
+import { ref } from "vue";
 export default {
   name: "Navegacion",
-  data() {
+  setup() {
+    let administrador = ref(null);
+    let users = ref(null);
+    administrador.value = window.localStorage.getItem("user");
+    function logout(){
+      window.localStorage.removeItem("user");
+      administrador.value=null;
+    }
     return {
       todos: store.todos,
+      administrador,
+      logout,
     };
   },
 };
