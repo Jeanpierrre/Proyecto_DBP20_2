@@ -14,22 +14,46 @@
         v-model="searchInput"
         @keyup.enter="searchUser(searchInput)"
       />
-    </div>
+
     <h1>Nombres:</h1>
-    <div v-for="user in users" :key="user.id" class="n">
-      <h1>{{ user.nombres }}</h1>
+    <h2>Apellidos:</h2>
+    <h3>Sedes:</h3>
+    <h4>Telefonos:</h4>
     </div>
-    <h2>Sede:</h2>
-    <div v-for="user in users" :key="user.id" class="h2">
-      <h2>{{ user.sede }}</h2>
+    <div class="inicio-avanzado">
+      <div v-for="user in users" :key="user.id">
+    
+          <h1>{{ user.nombres }}</h1>
+      </div>        
     </div>
-    <h3>Telefono:</h3>
-    <div v-for="user in users" :key="user.id" class="h3">
-      <h3>{{ user.telefono }}</h3>
+    
+    <div class="inicio-2">
+      <div v-for="user in users" :key="user.id">
+          <h1>{{ user.apellidos }}</h1>
+      </div>        
     </div>
+
+
+
+    <div class="inicio-basico">
+      <div v-for="user in users" :key="user.id">
+          <h1>{{user.sede}}</h1>
+      </div>        
+    </div>
+
+
+    <div class="inicio-intermedio">
+      <div v-for="user in users" :key="user.id">
+          <h1>{{user.telefono}}</h1>
+      </div>        
+    </div>
+
+
+
   </div>
 </template>
 <script>
+
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
@@ -74,109 +98,103 @@ export default {
 };
 </script>
 <style  scoped>
-h1 {
-  font-size: 3rem;
 
-  width: 650px;
 
-  height: 25px;
-
-  top: 50%;
-  left: 10%;
-  transform: translate(0%, 0%);
-  font-size: 22px;
-  margin-bottom: 20px;
-  font-family: "Times New Roman", Times, serif;
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+h1{
+    color: black;
+    font-size:22px ;
+    position: relative;
+    margin-bottom: 20px;
+    
+    font-family: 'Times New Roman', Times, serif;
+}
+h2{
+    color: black;
+    font-size:22px ;
+    position: relative;
+ top: 50%;
+  left: 37%;
+    position: absolute;
+    transform: translate(520%,-50%);
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+h4{
+    color: black;
+    font-size:22px ;
+    position: relative;
+ top: 50%;
+  left: 37%;
+    position: absolute;
+    transform: translate(1370%,-50%);
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-h2 {
-  width: 650px;
-  height: 25px;
-  top: 20%;
-  left: 10%;
-  transform: translate(70%, -550%);
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
-  font-size: 22px;
-  margin-bottom: 20px;
-  font-family: "Times New Roman", Times, serif;
-}
-
-h3 {
-  width: 650px;
-  height: 25px;
-
-  top: 10%;
-  left: 10%;
-  transform: translate(150%, -1100%);
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
-  font-size: 22px;
-  margin-bottom: 20px;
-  font-family: "Times New Roman", Times, serif;
-}
-.nivel-caja {
-  text-align: center;
-  width: 400px;
-  height: 355px;
-  background: #7858587d;
-  margin: auto;
+h3{
+  color: black;
+    font-size:22px ;
+    position: relative;
+ top: 50%;
+  left: 37%;
+    position: absolute;
+    transform: translate(1520%,-50%);
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    }
+.inicio-avanzado{
+  width: 300px;
+  height:500px;
+  top:50%;
+  left: 12%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 70px 5px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  font-family: "Times New Roman", Times, serif;
-}
-.sede-caja {
-  text-align: center;
-
-  width: 400px;
-  height: 500px;
-  top: 50%;
-  left: 80%;
-  position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
   box-sizing: border-box;
-  padding: 70px 5px;
-  background: #7858587d;
-  border-radius: 20px;
+  padding: 0px 5px;
+  background:rgb(208, 136, 29);
+  border-radius:20px;
 }
 
-.nombres {
-  width: 320px;
-  height: 40px;
-  background: rgb(120, 56, 189);
-  color: #fff;
-  top: 30%;
-  left: 20%;
+.inicio-2{
+  width: 300px;
+  height:500px;
+  background: rgb(210, 28, 28);
+  margin:auto;
   position: absolute;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
-  padding: 25px 35px;
-  color: white;
-  border-radius: 10px;
-}
-.nombres-caja {
-  text-align: center;
   top: 50%;
-  left: 20%;
-  width: 400px;
-  height: 500px;
-  background: #7858587d;
-  margin: auto;
-  position: absolute;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
-  padding: 25px 35px;
-  color: white;
-  border-radius: 10px;
+  left: 37%;
+  transform: translate(-50%,-50%);
+  padding: 0px 5px;
+  border-radius:20px;
 }
+.inicio-basico{
+  width: 300px;
+  height:500px;
+  background: rgb(223, 223, 12);
+  margin:auto;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%,-50%);
+  padding: 0px 5px;
+  border-radius:20px;
+  }
+
+.inicio-intermedio{
+    width: 300px;
+    height:500px;
+    top:50%;
+    left: 85%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 0px 5px;
+    background:rgb(13, 213, 213);
+    border-radius:20px;
+  }
+
+
+
 .box {
   position: absolute;
   top: 80px;
@@ -204,5 +222,4 @@ input.src:hover {
   box-shadow: 0 0 5px #6dcff680;
 }
 </style>
-
 

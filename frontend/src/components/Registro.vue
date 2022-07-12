@@ -151,7 +151,7 @@ body {
 }
 .login-box {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   width: 400px;
   padding: 40px;
