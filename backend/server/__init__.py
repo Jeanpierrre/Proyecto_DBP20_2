@@ -47,9 +47,21 @@ def create_app(test_config=None):
     @app.route('/usuarios/<int:rol>', methods=['GET'])
     def get_usuarios(rol):
         print("aqui")
+        search = request.args.get('search', '', type=str)
         try:
             print("aqui 2")
             if rol == 1:
+                print(search)
+                if search != '':
+                    print(search)
+                    selection = datos_usuario.query.order_by('id').filter(datos_usuario.nombres.like('%{}%'.format(search))).all()
+                    print(selection)
+                    usuarios= paginate(request, selection, False)
+                    return jsonify({
+                    'success': True,
+                    'usuario': usuarios,
+                    'total_usuarios': len(usuarios)
+                    })
                 selection = datos_usuario.query.order_by('id').all() 
                 usuarios = paginate(request, selection, False) #paginamos en formato json
                 print("aqui 3")
@@ -88,6 +100,7 @@ def create_app(test_config=None):
         nombre_sede = body.get('sede',None)
 
         try:
+            
             usuario = Usuario(codigo = codigo,nombres=nombres,password = generate_password_hash(password, method='sha256'))
             datos_usuarios = datos_usuario(nombres=nombres,apellidos=apellidos,telefono=telefono,edad=edad,colegio=colegio,dificultad=dificultad,nombre_sede=nombre_sede)
             new_usuario_id = usuario.insert()
@@ -399,11 +412,5 @@ def create_app(test_config=None):
             'message': 'Autenticacion requerida'
         }), 401  
         
-
-
-
-
-
-
 
     return app

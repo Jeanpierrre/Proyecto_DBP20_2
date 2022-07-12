@@ -11,7 +11,7 @@
     />
     <br />
     <input
-      type="text"
+      type="password"
       class="control"
       name="password"
       placeholder="Ingrese su password"
@@ -35,7 +35,7 @@
     />
     <br />
     <input
-      type="number"
+      type="tel"
       class="control"
       name="telefono"
       placeholder="Ingrese su telefono"
@@ -48,6 +48,8 @@
       name="edad"
       placeholder="Ingrese su edad"
       v-model="edad"
+      min = "111111111"
+      max = "999999999"
     />
     <br />
     <input
