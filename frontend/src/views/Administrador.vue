@@ -25,7 +25,7 @@
     </div>
     <h3>Telefono:</h3>
     <div v-for="user in users" :key="user.id" class="h3">
-      <h3>{{ user.dificultad }}</h3>
+      <h3>{{ user.telefono }}</h3>
     </div>
   </div>
 </template>
@@ -81,7 +81,7 @@ h1 {
 
   height: 25px;
 
-  top: 10%;
+  top: 50%;
   left: 10%;
   transform: translate(0%, 0%);
   font-size: 22px;
@@ -94,9 +94,9 @@ h1 {
 h2 {
   width: 650px;
   height: 25px;
-  top: 50%;
+  top: 20%;
   left: 10%;
-  transform: translate(70%, -1100%);
+  transform: translate(70%, -550%);
   color: rgb(255, 255, 255);
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
   font-size: 22px;
@@ -108,9 +108,9 @@ h3 {
   width: 650px;
   height: 25px;
 
-  top: 50%;
+  top: 10%;
   left: 10%;
-  transform: translate(150%, -2200%);
+  transform: translate(150%, -1100%);
   color: rgb(255, 255, 255);
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
   font-size: 22px;
