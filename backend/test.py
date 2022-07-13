@@ -18,6 +18,13 @@ class TestPeliculasApi(unittest.TestCase):
             'distrito':'San Borja',
             'direccion':'Javier Prado',
         }
+        self.new_usuario={
+            'id' : 10,
+            'codigo' : 'Stuart',
+            'nombres' : 'Stuart',
+            'password' : '1234',
+            'rol' : 1
+        }
     def test_get_sedes_success(self):
         res = self.client().get('/sedes') 
         data = json.loads(res.data)  
@@ -130,7 +137,7 @@ class TestPeliculasApi(unittest.TestCase):
         self.assertTrue(data['message'])
 
     def test_search_usuarios_by_dia(self):
-        res = self.client().post('/usuarios', json={'search': 'miercoles'})
+        res = self.client().post('/usuarios', json={'search': 'Stuart'})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
